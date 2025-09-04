@@ -9,4 +9,4 @@ Here you can find my projects, notes, and experiments.
 
 ## Blog
 I also use this site to publish development notes and tutorials.  
-Visit: [https://appi77.github.io/myblog](https://appi77.github.io/myblog)
+Visit: [https://appi77.github.io/blog](https://appi77.github.io/blog)
