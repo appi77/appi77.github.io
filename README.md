@@ -9,6 +9,6 @@ Here you can find my projects, notes, and experiments.
 
 ## Blog
 I also use this site to publish development notes and tutorials.  
-Visit: [https://appi77.github.io/blog](https://appi77.github.io/blog)
+Visit: [https://appi77.github.io/my-tips](https://appi77.github.io/my-tips)
 
 If you have any questions or issues, please leave a message on GitHub Issues: [Submit an Issue](https://github.com/appi77/appi77.github.io/issues)
