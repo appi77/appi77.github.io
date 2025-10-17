@@ -1,0 +1,1031 @@
+●	서버 정보
+
+	192.168.100.102
+	administrator / penta1987
+	
+	
+●	Hyper-V 기능 활성화
+
+	PS> Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+
+●	고정 IP 용 가상 스위치 생성
+
+	PS> New-VMSwitch -SwitchName "HanSwitch" -SwitchType Internal
+	PS> New-NetIPAddress -IPAddress 192.168.100.217 -PrefixLength 16 -InterfaceAlias "vEthernet (HanSwitch)"
+	PS> New-NetNat -Name "NATNetwork" -InternalIPInterfaceAddressPrefix "192.168.100.217/16"
+
+	PS> Remove-NetNat -Name "NATNetwork"
+
+	PS> Get-VMSwitch -SwitchName "HanSwitch"
+	PS> Get-NetIPAddress -InterfaceAlias "vEthernet (HanSwitch)"
+	PS> Get-NetNat 
+
+
+●	VM 생성
+
+	Extended-ECM 25.3
+	CPU : 8
+	메모리 : 65536G
+	하드디스크 : 2T
+	네트워크 어탭터 : VM Network
+	CD/DVD 드라이버 : 데이터스토어 ISO 파일 : ubuntu-24.04.3-live-server-amd64.iso
+
+	#Hyper-V VM 강제 종료
+	Stop-VM -Name "Extended-ECM 25.3" -Force	
+
+
+●	우분트 다운로드 및 업로드
+
+	Ubuntu 24.04.1 	https://old-releases.ubuntu.com/releases/24.04/ubuntu-24.04.1-live-server-amd64.iso
+	Ubuntu 24.04.3 
+	https://releases.ubuntu.com/noble/ubuntu-24.04.3-live-server-amd64.iso
+	
+	
+●	우분트 설치
+
+	Language: English
+	Keyboard Layout: Korean
+	Ubuntu Server(Default): Minimized
+
+	Network connection - IPv4 , Manual:
+		Subnet : 192.168.0.0/16
+		Address : 192.168.100.217
+		Gateway : 192.168.100.254
+		Name Server : 8.8.8.8
+		
+	Mirror address: {Default} http://kr.archive.ubuntu.com/ubuntu
+							  http://mirror.kakao.com/ubuntu 
+							  
+	name: {your name} (e.g. hankeero)
+	server's name: myubuntu7-hv
+	username: {your username } (e.g.hankeero)
+	password: {your password} (e.g. Opentext1!)
+
+	FILE SYSTEM SUMMARY >> Mount Point >> / >> Unmount
+	AVAILABLE DEVICES >> ubuntu-lv >> Delete >> Delete
+	AVAILABLE DEVICES >> free space >> Create Logical Volume  >> Create 
+	Name: lv-0
+	Size: {blank}
+	Format: ext4
+	Mount: /
+	
+	$ sudo timedatectl set-timezone Asia/Seoul
+	$ timedatectl
+	
+
+●	클라이언트 hosts 설정
+
+	#도메인으로 등록한 경우, 별도 설정 필요 없음
+	192.168.100.217		myubuntu7-hv
+	192.168.100.217		k8s-dashboard.pentasystem.kr
+	192.168.100.217		castlemock.pentasystem.kr
+	192.168.100.217		otcs.pentasystem.kr
+	192.168.100.217		otds.pentasystem.kr
+	192.168.100.217		otac.pentasystem.kr
+	192.168.100.217		otiv-publication.pentasystem.kr
+	192.168.100.217		otiv-highlight.pentasystem.kr
+	192.168.100.217		otiv-viewer.pentasystem.kr
+	192.168.100.217		otiv-markup.pentasystem.kr
+	192.168.100.217		otiv-asset.pentasystem.kr
+
+
+●	SSH 접속 설정
+
+	ssh hankeero@myubuntu2-hv
+	
+	*	notepad "$env:USERPROFILE\.ssh\known_hosts"
+	
+	PS> ssh hankeero@myubuntu2-hv
+	$ uname -a
+	$ hostname
+	$ ip -f inet -c address
+	$ exit
+
+	PS> ssh-keygen
+	
+	PS> PowerShell -Command type $env:USERPROFILE\.ssh\id_rsa.pub | ssh hankeero@myubuntu2-hv "cat >> ~/.ssh/authorized_keys"
+
+	PS> ssh hankeero@myubuntu2-hv
+	
+	# 기존에 만들어놓은 ssh key 복사
+	PS> PowerShell -Command type $env:USERPROFILE\.ssh\id_rsa.pub | ssh hankeero@myubuntu7-hv "cat >> ~/.ssh/authorized_keys"
+
+	PS> ssh hankeero@myubuntu7-hv
+
+	접속이 안 될경우, HanSwitch 설정을 외부 네트워크로 변경
+	
+
+●	시스템 업데이트 & 기본 툴 설치
+
+	$ sudo apt update
+	*	apt(Advance Packging Tools) 설치 가능한 패키지 리스트를 최신화
+	*	sudo apt list
+	*	sudo apt list --upgradable
+	*	sudo vi /etc/apt/sources.list
+	*	:%s/kr.archive.ubuntu.com/mirror.kakao.com
+	*	vi /etc/apt/sources.list
+	*	sudo apt-get install iputils-ping
+	*	sudo apt-get install net-tools
+	
+	$ sudo apt upgrade -y
+
+	$ sudo apt install python3-pip
+	*	pip3 --version
+	
+	$ sudo apt install net-tools dnsutils iputils-ping jq vim git unzip -y
+	
+	$ sudo snap install yq
+		
+	$ uname -a
+	$ lsb_release -a
+
+	# 오류 발생시 아래와 같이 조치
+	error: cannot install "yq": Post "https://api.snapcraft.io/v2/snaps/refresh": Bad Request
+
+	$ sudo apt purge snapd
+	$ sudo rm -rf /var/cache/snapd /var/lib/snapd /snap /etc/systemd/system/snapd.*
+	$ sudo apt update
+	$ sudo apt install snapd
+	$ sudo systemctl enable --now snapd
+	$ snap version
+	$ sudo snap install hello
+
+	
+●	추가 환경 설정 - Swap 제거
+
+	$ free -h
+	$ swapon --show
+
+	# 현재 swap을 끔
+	$ sudo swapoff -a
+
+	# 기존 swap 설정 라인 (e.g /swap.img) 모두 삭제 후 저장
+	$ sudo vi /etc/fstab
+		
+	# 루트의 swap.img 파일 삭제
+	$ sudo rm /swap.img
+	
+	
+●	docker 설치
+
+	$ sudo snap install docker
+
+	$ sudo groupadd --system docker 
+	$ sudo usermod -aG docker $USER 
+	$ newgrp docker
+
+	$ sudo snap disable docker
+	$ sudo snap enable docker
+
+	$ sudo snap services docker
+
+	$ docker run --rm hello-world
+	$ docker images
+
+
+●	kubernetes (microk8s) 설치
+	
+	$ sudo snap install microk8s --classic
+	$ snap info microk8s
+
+	$ sudo microk8s disable ha-cluster --force
+	$ sudo microk8s enable helm3 dns hostpath-storage dashboard rbac
+	
+	$ sudo microk8s enable metallb:192.168.100.217-192.168.100.217
+
+	$ sudo microk8s status --yaml | grep enabled
+	$ sudo microk8s ctr images ls -q
+	
+	$ sudo chmod g-rw /var/snap/microk8s/current/credentials/client.config
+	$ sudo chown $USER /var/snap/microk8s/current/credentials/client.config
+
+	$ sudo ls -l /var/snap/microk8s/current/credentials/client.config
+
+	$ sudo usermod -a -G microk8s $USER
+	
+	$ sudo microk8s.kubectl cluster-info 
+	$ sudo microk8s.helm3 ls
+
+	$ sudo snap alias microk8s.kubectl kubectl 
+	$ sudo snap alias microk8s.helm3 helm  
+
+	$ sudo kubectl cluster-info
+	$ sudo kubectl get nodes -o wide
+
+	$ helm version
+	$ helm list
+
+
+●	배포 환경 준비
+
+	$ docker version
+	$ kubectl version
+	$ helm version
+
+	$ uname -a
+	$ cat /etc/*release
+	$ yq --version
+
+
+●	로컬 테스트용 https 인증서 생성
+
+	# mkcert 설치를 위해 [Chocolatey](https://chocolatey.org/install) 설치 
+	PS> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+	# (Chocolatery 설치 후 PowerShell 재시작  후) mkcert 설치 및 인증서 생성
+	PS> choco install mkcert
+
+	# 인증서 생성용 폴더 생성 후 이동
+	PS> mkdir ~/mkcert
+	PS> cd ~/mkcert
+
+	# system trust store에 local CA 설치 후 myubuntu1.hv에 대한 인증서와 key 생성
+	PS> mkcert -install 
+	PS> mkcert pentasystem.kr "*.pentasystem.kr" myubuntu7-hv
+	
+	# myubuntu1-hv (microk8s 서버)로 인증서와 Key 업로드
+	PS> scp ./* hankeero@myubuntu7-hv:~/
+
+	# 신규 서버 구성시 아래 두 명령어만 수행
+	PS> mkcert pentasystem.kr "*.pentasystem.kr" myubuntu7-hv
+	PS> scp ./* hankeero@myubuntu7-hv:~/
+	
+	PS> scp ./*.pem hankeero@myubuntu7-hv:~/
+
+	# (microk8s 서버)에서 인증서가 올라간 것을 확인
+	$ ls ~/*.pem
+
+
+●	microK8S 환경 준비
+
+	$ microk8s status
+
+	$ hostname -I | awk '{print $1}'
+
+	$ kubectl config get-contexts
+
+
+●	Ingress 준비
+
+	$ microk8s enable ingress
+	$ kubectl get all -n ingress
+
+	sudo kubectl edit daemonset.apps/nginx-ingress-microk8s-controller -n ingress
+	# spec.template.spec.args의 "- --ingress-class=public" 라인을 제거 후 저장
+
+
+●	Kubernetes dashboard 준비
+
+	$ microk8s enable dashboard
+	
+	# (ingress와 동일한 namespace 내에 )dashboard 용 tls secret 생성 
+	$ kubectl create secret tls tls-secret --cert "./pentasystem.kr+2.pem" --key "./pentasystem.kr+2-key.pem" -n kube-system
+	
+	PS> notepad C:\Windows\System32\drivers\etc\hosts
+	192.168.100.217       k8s-dashboard.pentasystem.kr
+
+	$ vi k8s-dashboard-host.yaml
+	apiVersion: networking.k8s.io/v1
+	kind: Ingress
+	metadata:
+	  name: k8s-dashboard-host
+	  namespace: kube-system
+	  annotations:
+		kubernetes.io/ingress.class: nginx
+		nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+	spec:
+	  rules:
+	  - host: k8s-dashboard.pentasystem.kr
+		http:
+		  paths:
+		  - backend:
+			  service:
+				name: kubernetes-dashboard
+				port:
+				  number: 443
+			pathType: ImplementationSpecific
+	  tls:
+	  - hosts:
+		- k8s-dashboard.pentasystem.kr
+		secretName: tls-secret
+	
+	# Ingress 적용
+	$ kubectl apply -f k8s-dashboard-host.yaml
+	$ kubectl get ingress -n kube-system
+	$ kubectl describe ingress -n kube-system k8s-dashboard-host
+	
+	https://k8s-dashboard.pentasystem.kr/
+	
+	# admin-user service Account 생성
+	$ kubectl create sa admin-user -n kube-system
+	
+	# cluster role binding 생성
+	$ kubectl create clusterrolebinding admin-user --clusterrole=cluster-admin --serviceaccount=kube-system:admin-user -n kube-system
+
+	# admin-user의 token 값을 얻음 
+	$ kubectl -n kube-system create token admin-user
+	
+	
+●	Install PostgreSQL on Ubuntu 24.04 LTS
+
+	# 1. 저장소 추가(안 해도 됨)
+	$ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+	$ curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+
+	$ sudo apt update
+
+	# 2. PostgreSQL 16 설치
+	
+	$ sudo apt install postgresql
+	# sudo apt install postgresql-client (Server 설치시 함께 설치됨)
+
+	# 3. 서비스 시작 및 자동 실행 설정
+	$ sudo systemctl start postgresql
+	$ sudo systemctl enable postgresql
+
+	# 4. 설치 확인
+	$ psql --version  
+	# psql (PostgreSQL) 16.9 (Ubuntu 16.9-0ubuntu0.24.04.1)
+
+	# Log into PostgreSQL and change the password
+	$ sudo -u postgres psql
+	  postgres=# \password postgres
+	  # 새로운 패스워드 입력 : Opentext1!
+	  postgres=#\q
+
+	# Step 4: Configure PostgreSQL
+	$ sudo vi /etc/postgresql/16/main/postgresql.conf
+	# 아래와 같이 listen_addresses 부분의 코멘트를 해제 및 설정 후 저장하고 port도 확인
+	listen_addresses = '*'
+	port = 5432 
+
+	$ sudo vi /etc/postgresql/16/main/pg_hba.conf
+	# 아래와 같이 host ... scram-sha-256의 주소 (IPv4 local connection)를 모든 IP로 변경하고, 
+	# Unix domain socket connection용 local의 인증방식을 peer에서 md5로 변경
+	# "local" is for Unix domain socket connections only
+	local   all             all                                     md5
+	# IPv4 local connections:
+	host    all             all             0.0.0.0/0            scram-sha-256
+
+
+	max_connections = 300
+
+	
+	# 재시작
+	$ sudo systemctl restart postgresql
+	
+	# port에 서비스가 제공되고 있는 것 확인
+	$ netstat -ano | grep 5432
+	
+	# Firewall도 설정
+	$ sudo apt install ufw -y
+	$ sudo ufw allow 5432/tcp
+
+	# 접속 테스트
+	$ psql --host 192.168.100.217 --port 5432 -U postgres
+ 
+ 
+●	DB 생성
+
+	# 접속
+	$ psql --host 192.168.100.217 --port 5432 -U postgres
+	
+	# Content Server DB 생성
+	postgres=# CREATE DATABASE "cs" ENCODING = 'UTF8' CONNECTION LIMIT = -1;
+			   GRANT CONNECT ON DATABASE cs TO postgres;
+			   GRANT CREATE ON DATABASE cs TO postgres;
+
+	# 사용자 otdsuser 생성
+	postgres=# CREATE USER otdsuser WITH LOGIN NOSUPERUSER NOCREATEDB INHERIT NOREPLICATION CONNECTION LIMIT -1 PASSWORD 'Opentext1!';
+
+	# 데이터베이스 otdsdb 생성 후 otdsuser에게 권한 부여
+	postgres=# CREATE DATABASE "otdsdb" ENCODING = 'UTF8' CONNECTION LIMIT = -1;
+			   GRANT CONNECT ON DATABASE otdsdb TO otdsuser;
+			   GRANT CREATE ON DATABASE otdsdb TO otdsuser;
+
+	# 데이터베이스를 cs로 변경 후 Extension 설치
+	postgres=# \c cs
+
+	cs=# CREATE EXTENSION IF NOT EXISTS pg_trgm SCHEMA public;
+		 CREATE EXTENSION IF NOT EXISTS pgcrypto SCHEMA public;
+		 CREATE EXTENSION IF NOT EXISTS unaccent SCHEMA public;
+
+	# 데이터베이스를 otdsdb로 변경 후 Extension 설치 (otdsuser로 로그인)
+	cs=# \c otdsdb otdsuser
+
+	otdsdb=> CREATE EXTENSION IF NOT EXISTS pg_trgm SCHEMA public;
+			 CREATE EXTENSION IF NOT EXISTS pgcrypto SCHEMA public;
+			 CREATE EXTENSION IF NOT EXISTS unaccent SCHEMA public;
+
+	# 데이터베이스 조회 후 생성 결과 확인
+	postgres=# \l
+
+	# psql 종료
+	postgres=# \q	
+	
+	# 데이터베이스 삭제
+	psql --host 192.168.100.217 --port 5432 -U postgres
+
+	postgres=# DROP DATABASE "cs";
+	postgres=# DROP DATABASE "ac";
+	postgres=# DROP DATABASE "otiv";
+	postgres=# DROP DATABASE "otdsdb";
+	postgres=# DROP USER "otdsuser";
+
+	postgres=# \l
+	
+	
+●	Extended ECM 설치
+
+	# otxecm 용 tls 생성 (otxecm 배포용 namspace인 default를 사용)
+	$ kubectl create secret tls xecm-secret --cert "./pentasystem.kr+2.pem" --key "./pentasystem.kr+2-key.pem"
+
+	# Container Registry 계정 설정 (MySupport 계정 사용)
+	$ export OT_MYSUPPORT_USERNAME='otsupport@penta.co.kr'
+	$ export OT_MYSUPPORT_PASSWORD='2wsx2wsx@WSX'
+
+	# 테스트 - 설정된 계정으로 로그인 시도 
+	$ docker login -p $OT_MYSUPPORT_PASSWORD  -u $OT_MYSUPPORT_USERNAME registry.opentext.com
+
+	# 로그인 확인 후 로그아웃
+	$ docker logout registry.opentext.com
+
+	# Opentext Registry Secret 확인 및 설정
+	$ kubectl get secret regcred
+	
+	$ kubectl create secret docker-registry regcred \
+	--docker-server=https://registry.opentext.com/v2/ \
+	--docker-username=$OT_MYSUPPORT_USERNAME \
+	--docker-password=$OT_MYSUPPORT_PASSWORD \
+	--docker-email=$OT_MYSUPPORT_USERNAME
+
+	# helm chart repository 등록
+	$ helm repo add opentext https://registry.opentext.com/helm \
+	 --username $OT_MYSUPPORT_USERNAME \
+	 --password $OT_MYSUPPORT_PASSWORD
+	$ helm repo update
+
+	# 현재 opentext 레지스트리에 등록된 최신 otxecm 차트 검색 및 다운로드
+	$ helm search repo opentext
+	
+	#설치파일 다운로드
+	$ helm pull opentext/otxecm --version=25.3.0
+	
+	scp ./otxecm-init-lang-ko-kr.tar hankeero@myubuntu7-hv:~/
+	
+	
+	# Untar the helm chart package in the current directory
+	$ tar xvfz otxecm-25.3.0.tgz
+
+
+	# 업로드할 한글언어팩 initContainer 도커이미지 tar 파일 업로드 & 확인
+	ls ./otxecm-init-lang-ko-kr.tar -al
+	
+	
+	# microk8s에 이미지 업로드
+	sudo microk8s ctr images import ./otxecm-init-lang-ko-kr.tar
+	
+	
+	# 업로드 이미지에 로컬 레지스트리 태그를 추가
+	sudo microk8s ctr images tag docker.io/library/otxecm-init-lang-ko-kr:25.3 registry.pentasystem.kr/otxecm-init-lang-ko-kr:25.3
+	
+	# 업로드 이미지 확인
+	sudo microk8s ctr images ls | grep otxecm-init-lang-ko-kr
+
+
+
+
+	# otxecm에 helm chart가 준비된 것 확인
+	$ ls otxecm -al
+
+	$ vi ./otxecm/myvalues.yaml
+	# 별도 파일 참조하여 내용 작성
+	
+	$ helm lint ./otxecm -f ./otxecm/myvalues.yaml
+	
+	$ yq e '.global | to_entries | .[] | .key + ": " + .value.enabled ' ./otxecm/myvalues.yaml
+
+	$ cat pentasystem.kr+2-key.pem  pentasystem.kr+2.pem > ./otxecm/charts/otcs/sp.pem
+
+	$ helm install xecm-release ./otxecm --dry-run --debug -f ./otxecm/myvalues.yaml > ./otxecm/myvalues.log
+	
+	$ sed -n -E 's/.*(registry\.opentext\.com\/[^\s:]+:[0-9.]+).*/\1/p' ./otxecm/myvalues.log
+
+	registry.opentext.com/otxecm:25.3.0
+	registry.opentext.com/otxecm-ctrl:25.3.0
+	registry.opentext.com/otac:24.4.3
+	registry.opentext.com/otiv-amqp:25.3.0
+	registry.opentext.com/otiv-config:25.3.0
+	registry.opentext.com/otiv-highlight:25.3.0
+	registry.opentext.com/otiv-markup:25.3.0
+	registry.opentext.com/otiv-publication:25.3.0
+	registry.opentext.com/otiv-viewer:25.3.0
+	
+	$ docker login -p $OT_MYSUPPORT_PASSWORD  -u $OT_MYSUPPORT_USERNAME registry.opentext.com
+	
+	$ docker manifest inspect registry.opentext.com/otxecm:25.3.0 | grep schemaVersion
+	
+	"schemaVersion": 2,
+
+	# K9S 설치
+	$ sudo snap install k9s --devmode
+
+	# 실행 위치에 소프트링크 생성
+	$ sudo ln -s /snap/k9s/current/bin/k9s /snap/bin/
+
+	# 현재 config를 기본 kubernets 설정 위치에 생성
+	$ kubectl config view --raw > $HOME/.kube/config
+
+	# 구동
+	$ k9s
+	
+	# *** otxecm 배포 ***
+	$ helm install xecm-release ./otxecm -f ./otxecm/myvalues.yaml
+	
+	# 확인
+	$ helm list
+	$ kubectl get pods
+	$ kubectl get pvc
+	$ kubectl get job
+	$ kubectl get sts
+	$ kubectl get deployment
+	$ helm search repo opentext
+	$ psql --host 192.168.100.217 --port 5432 -U postgres
+	
+	https://otcs.pentasystem.kr/cs/cs
+	
+	
+●	언어 팩 설치, 데이터 포맷 변경
+	
+	https://support.opentext.com/csm?sys_kb_id=213059c23b78a290dfd01931a3e45ae2&id=kb_article_view&sysparm_rank=2&sysparm_tsqueryId=03d83775936fe21037ae3fd17cba1087
+	https://mimage.opentext.com/support/ecm/secure/software/les/25.2/langpack_25.2.0_cs64_lnx_ko_kr.tar.gz
+	# docker manifest inspect registry.opentext.com/otxecm-init-lang-ko-kr:25.3
+		
+
+	PS> scp ./langpack_25.2.0_cs64_lnx_ko_kr.tar.gz hankeero@myubuntu7-hv:~/
+	
+	$ kubectl get pods
+
+	$ kubectl cp ./langpack_25.2.0_cs64_lnx_ko_kr.tar.gz otcs-frontend-0:/opt/opentext/cs
+	
+	$ kubectl cp ./langpack_25.2.0_cs64_lnx_ko_kr.tar.gz otcs-admin-0:/opt/opentext/cs
+	
+	$ kubectl cp ./langpack_25.2.0_cs64_lnx_ko_kr.tar.gz otcs-da-0:/opt/opentext/cs
+	
+	$ kubectl cp ./langpack_25.2.0_cs64_lnx_ko_kr.tar.gz otcs-backend-search-0:/opt/opentext/cs
+	
+	$ kubectl -it exec otcs-frontend-0 -- bash
+	$ kubectl -it exec otcs-admin-0 -- bash
+	$ kubectl -it exec otcs-da-0 -- bash
+	$ kubectl -it exec otcs-backend-search-0 -- bash
+
+	
+	# Install Home으로 이동
+	[otuser@otcs-frontend-0 /]$ cd /opt/opentext/cs
+	[otuser@otcs-frontend-0 cs]$ ls -al
+	# langpkgstaging 폴더와 langpack_25.2.0_cs64_lnx_ko_kr.tar.gz 파일 확인
+	
+	[otuser@otcs-frontend-0 cs]$ tar -xzvf ./langpack_25.2.0_cs64_lnx_ko_kr.tar.gz
+		
+	https://otcs.pentasystem.kr/cs/cs?func=admin.installlanguage
+	Install
+	Restart
+	Contunue
+
+	https://otcs.pentasystem.kr/cs/cs?func=admin.metadatalanguageget
+	Korean ( South Korea ) - ko_KR
+	Apply
+	Enabled
+	Save Changes
+	
+	https://otcs.pentasystem.kr/cs/cs?func=admin.dateformat
+	Date Format: Korean | (_ko_KR)
+	Save Changes
+	
+	https://otcs.pentasystem.kr/cs/cs?func=admin.configurelanguage
+	Enabled
+	Save Changes
+	
+
+●	인증서 교체
+
+	# 인증서 확인
+	$ cat STAR.pentasystem.kr_crt.pem | openssl x509 -noout -dates
+	
+	$ kubectl get secret -n kube-system
+	$ kubectl delete secret tls-secret -n kube-system
+	$ kubectl create secret tls tls-secret --cert "./STAR.pentasystem.kr_crt.pem" --key "./STAR.pentasystem.kr_key.pem" -n kube-system
+	
+	# tls-secret 내 인증서의 만료일 확인
+	$ kubectl get secret tls-secret -n kube-system -o "jsonpath={.data['tls\.crt']}" | base64 -d | openssl x509 -enddate -noout
+	
+	$ kubectl get secret
+	$ kubectl delete secret xecm-secret
+	$ kubectl create secret tls xecm-secret --cert "./STAR.pentasystem.kr_crt.pem" --key "./STAR.pentasystem.kr_key.pem"
+
+	
+●	삭제
+
+	# XECM 삭제
+	$ helm delete xecm-release
+	
+	# postgres 삭제(DB 삭제는 불필요)
+	$ helm delete postgresql-otxecm-db
+	
+	# 모든 Persistent Volume Claim 삭제
+	$ kubectl delete pvc --all
+	
+	# otiv 관련 sa와 secret 삭제
+	$ kubectl delete secret $(kubectl get secret | grep otiv | awk '{print $1}') 
+	$ kubectl delete sa $(kubectl get sa | grep otiv | awk '{print $1}')
+	
+	# (OpenText) Container Registry secret 삭제
+	kubectl delete secret regcred
+
+	# 제대로 삭제가 안 되는 경우
+	$ kubectl get sts
+	$ kubectl get secret
+	$ kubectl get sa
+	$ kubectl get deployment
+	$ kubectl get pods
+	$ kubectl delete pod <pod_name> --force --grace-period=0
+	$ kubectl get pvc
+	$ kubectl get job
+	$ kubectl delete job <job_name>
+
+	
+●	배포 결과 검토 (admin / Opentext1!)
+
+	$ OTDS_EX_IP=$(kubectl get svc | grep otds | awk '{print $4}')
+	$ OTCS_EX_IP=$(kubectl get svc | grep otcs-frontend | awk '{print $4}')
+
+	$ echo - OTDS ADMIN: http://$OTDS_EX_IP/otds-admin
+	$ echo - OTCS: http://$OTCS_EX_IP/cs/cs
+	$ echo - OTCS Smart View: http://$OTCS_EX_IP/cs/cs/app
+
+	$ OTDS ADMIN: http://{otds EXTERNAL-IP}/otds-admin
+	$ OTCS: http://{otcs-frontend EXTERNAL-IP}/cs/cs
+	$ OTCS Smart View: http://{otcs-frontend EXTERNAL-IP}/cs/cs/app
+
+
+●	환경 구성
+	
+	https://otcs.pentasystem.kr/cs/cs?func=admin.smartui
+	
+	https://otcs.pentasystem.kr/cs/cs?func=viewxadmin.service
+	
+	https://otcs.pentasystem.kr/cs/cs?func=viewxadmin.viewing
+	
+	https://otcs.pentasystem.kr/cs/cs?func=viewxadmin.transform
+	
+	https://otcs.pentasystem.kr/cs/cs?func=user.listusers
+	
+	
+●	라이선스 등록
+	
+	https://otds.pentasystem.kr/otds-admin/
+	
+	https://otcs.pentasystem.kr/cs/cs?func=admin.viewLicense
+	
+	https://otds.pentasystem.kr/otds-admin/#usersgroups
+	
+	
+	
+●	시스템 종료
+
+	sudo shutdown -h now
+	sudo shutdown -r now
+	
+	
+●	실습환경 점검
+	
+	microk8s status --yaml | grep enabled
+	kubectl cluster-info
+	kubectl get pods
+		
+	kubectl create deployment --image=castlemock/castlemock castlemock 
+	kubectl expose deployment castlemock --type=NodePort --port=8080  --name=castlemock
+	kubectl get svc castlemock
+	
+	vi ingress-castlemock.yaml
+		# 외부에서 TLS로 casltemock에 접근하기 위한 Ingress 정의 
+		apiVersion: networking.k8s.io/v1
+		kind: Ingress
+		metadata:
+		  name: castlemock
+		  namespace: default
+		  annotations:
+			kubernetes.io/ingress.class: nginx
+			# 서비스가 제공하는 포트(8080) 프로토콜 정의
+			nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+		spec:
+		  rules:
+		  - host: castlemock.pentasystem.kr
+			http:
+			  paths:
+			  - backend:
+				  service:
+					name: castlemock
+					port:
+					  number: 8080
+				pathType: ImplementationSpecific
+		  # TLS 이용 
+		  tls:
+		  - hosts:
+			- castlemock.pentasystem.kr
+			secretName: xecm-secret
+	
+	kubectl apply -f ingress-castlemock.yaml
+	kubectl describe ingress castlemock
+	
+	https://castlemock.pentasystem.kr/castlemock/#/web (admin / Opetext1!)
+	
+	https://github.com/wookjinjeon/keec/blob/main/learning-ot-xecm/assets/castlemock_xecm-biz-mock.xml
+	
+	https://castlemock.pentasystem.kr/castlemock/mock/soap/project/ocSNYh/ECMLinkService?wsdl
+	
+	
+	2.1 범주(Categories) 및 속성(Attributes) 설정
+	
+	Enterprise ▽ Business Worspaces ▷ Categories
+	Add Item ▽ Category Folder
+	Name : Extended ECM (확장 ECM)
+	
+	Enterprise ▽ Business Worspaces ▷ Categories ▷ Extended ECM
+	Add Item ▽ Category
+	Name : Customer (고객) / Research notes (연구노트) / General Document (일반문서) / Proposal (제안서)
+
+	Enterprise ▽ Business Worspaces ▷ Categories ▷ Extended ECM ▷ Customer
+	Add Attribute - ID(Text:Field), Name(Text:Field), Country(Text:Field), Contact Email(Text:Field)
+
+	Enterprise ▽ Business Worspaces ▷ Categories ▷ Extended ECM ▷ Research notes
+	Add Attribute - ID(Text:Field), Name(Text:Field), Country(Text:Field), Contact Email(Text:Field)
+	
+	연구번호 (Text: ADN CE Reference,  ADN Creation Type : Generation, Element type : Sequence, Sequence Type : Numeric, 00000N)
+	과제명 (Text:Field)
+	작성일자 (Data:Field)
+	연구명 (Text:Field)
+	키워드 (Text:Multiline)
+	목적 (Text:Multiline)
+	연구내용요약 (Text:Multiline)
+	기대효과 (Text:Multiline)
+	작성자 (User:Field)
+	상태 (Text:Popup)
+	유효일자 (Data:Calendere Attribute)
+
+
+	2.2 분류(Classifications) 설정 (폴더 위치 중요)
+
+	Enterprise ▽ Business Worspaces ▷ Classifications ▷ Types
+	Add Item ▽ Classifications Tree
+	Name : Extended ECM (확장 ECM)
+	
+	Enterprise ▽ Business Worspaces ▷ Classifications ▷ Types ▷ Extended ECM
+	Add Item ▽ Classification
+	Name : Customer (고객) / Research notes (연구노트)
+	
+
+	2.3 개체 형식에 대한 분류 트리 설정 확인
+	
+	Admin ▽ Content Server Administration 
+	Document Templates Administration ▽ Configure Content Server Document Templates
+	Classification tree for object types: Classifications:Types
+	
+	
+	2.4 워크스페이스 폴더 생성
+	
+	Enterprise ▽ Workspace
+	Add Item ▽ Folder
+	Name : Extended ECM (확장 ECM)
+	
+	Enterprise ▽ Workspace ▷ Extended ECM
+	Add Item ▽ Folder
+	Name : Customer (고객) / Research notes (연구노트)
+	Classifications: Browse Calssifications ▷ Extended ECM ▷ Customer(선택) / Research notes(선택)
+	
+
+	2.5 워크스페이스 유형 (Workspace Type) 설정
+	
+	Enterprise ▽ Business Worspaces ▷ Workspace Types
+	Add Item ▽ Workspace Type
+
+	[ General ]
+	Name : Customer (고객)
+	Workspace Type Names (en) : Customer (x고객)
+	Business Worksaces Names (en) : Insert Attribute ▷ Customer:ID - Customer:Name (Customer:ID - Customer:Name)
+	Workspace Icon : (Anything)
+	Workspace Creation Settings:
+	Location: Content Server Folder 
+	Select ▷ Extended ECM ▷ Customer(선택) / Research notes(선택)
+	
+	[ Advanced ]
+	Classification: Content Server Classification 
+	Select ▷ Extended ECM ▷ Customer(선택)
+	
+	Save Changes
+	
+@@	Enterprise ▽ Business Worspaces ▷ Customer
+@@	Workspace Types Manage Perspectives for this workspace type
+
+	[ General ]
+	Create new
+	Title: Customer
+	
+	[ Configure ]
+	Overview ▷ Business Workspace Metadata
+	Metadata ▷ Category
+	Category ▷ ECM Traning ▷ Customer(선택)
+	Create 
+	
+	
+	2.6 문서 템플릿 생성
+	
+	Enterprise ▽ Document Templates
+	Add Item ▽ Folder
+	Name : Extended ECM
+	
+	Enterprise ▽ Document Templates ▷ Extended ECM
+	Add Item ▽ Business Workspace
+	Name : Customer Business Workspace (고객 비즈니스 워크스페이스)
+	Workspace Type: Customer
+	Classification: Types: Customer
+	Categories: Customer
+
+	Enterprise ▽ Document Templates ▷ Extended ECM ▷ Customer Business Workspace
+	Add Item ▽ Folder
+	Name : 정보 (, 미팅/회의록, 발표/전달자료, 참고자료)
+	Add Item ▽ Forum
+	Name : 질의/답변
+
+@@	Enterprise ▽ Document Templates ▷ Extended ECM ▷ Customer Business Workspace ▽ Team Roles and Permissions
+	Add Role
+	Role : 영업대표 (, 고객지원담당자, 프로젝트매니저, 솔루션컨설턴트)
+	※ 기존 Role은 삭제
+
+
+	2.7 템플릿으로 부터 문서 만들기
+	Enterprise ▽ Business Worspaces ▷ Classifications ▷ Types ▷ Document Types
+	Add Item ▽ Classification 
+	Name : General Document Template / Research notes Template
+	Add
+	
+	Enterprise > Sandbox > Documents / Research notes
+	Apply Classification >> General Document Template / Research notes Template
+
+	Enterprise ▽ Document Templates
+	Add Item ▽ Folder
+	Name : General document template
+	Classification: Types: General Document Template   
+	
+	
+●	비즈니스 시나리오 오류 해결
+
+	Workbench 생성
+	Enterprise > Transport Warehouse
+	Add Item > Workbench
+	Name : Projects Workbench
+
+	Project 비즈니스 시나리오 업로드
+	Enterprise > Transport Warehouse > Transport Packages
+	OpenText Business Scenario Projects - 02.zip 등록 (Drag & Drop)
+
+	Project 비즈니스 시나리오 Unpack
+	Enterprise > Transport Warehouse > Transport Packages
+	OpenText Business Scenario Projects - 02.zip 클릭
+	하단의 Unpack to workbence 클릭
+	Unpack to : Prokect Workbench (위 1. 에서 생성한)
+
+	Project Workbench 배포
+	Enterprise > Transport Warehouse > Agreements(EAM, Projects, Real Estate Management, Teamspaces) Workbench 
+	우측의 Deploy workbench 실행
+	Project Workbench 내용 확인 후 하단의 Deploy 실행
+
+	http://otcs.pentasystem.kr/cssupport/xecmpf/transport/OpenText%20Business%20Scenario%20Projects%20-%2002.zip
+	http://otcs.pentasystem.kr/cssupport/xecmpf/transport/OpenText%20Business%20Scenario%20Teamspaces%20-%2002.zip
+	http://otcs.pentasystem.kr/cssupport/xecmpf/transport/OpenText%20Business%20Scenario%20Agreements%20-%2002.zip
+	http://otcs.pentasystem.kr/cssupport/xecmpf/transport/OpenText%20Business%20Scenario%20Real%20Estate%20Management%20-%2002.zip
+	http://otcs.pentasystem.kr/cssupport/xecmpf/transport/OpenText%20Business%20Scenario%20Help%20Web%20Pages%20-%2002.zip
+	
+	Projects
+	Teamspaces
+	Agreements
+	Real Estate Management
+	Help Web Pages
+	
+	EAM business Scenario
+	
+	https://otcs.pentasystem.kr/cssupport/xecmsap/transport/OpenText%20Business%20Scenario%20EAM%20Setup.zip
+	https://otcs.pentasystem.kr/cssupport/xecmsap/transport/OpenText%20Business%20Scenario%20Enterprise%20Asset%20Management%20-%2001.zip
+	https://otcs.pentasystem.kr/cssupport/xecmsap/transport/OpenText%20Business%20Scenario%20Enterprise%20Asset%20Management%20-%2002.zip
+	https://otcs.pentasystem.kr/cssupport/xecmsap/transport/OpenText%20Business%20Scenario%20Enterprise%20Asset%20Management%20-%2003.zip
+	https://otcs.pentasystem.kr/cssupport/xecmsap/transport/OpenText%20Business%20Scenario%20Enterprise%20Asset%20Management%20-%2004.zip
+	
+	
+●	서비스 구동 오류 해결
+	hankeero@myubuntu7-hv:~$ kubectl logs otcs-admin-0
+	Defaulted container "otcs-admin-container" out of: otcs-admin-container, otxecm-init-lang-ko-kr (init)
+	2025-07-21 05:37:45,685 INFO Set uid to user 1000 succeeded
+	2025-07-21 05:37:45,688 INFO supervisord started with pid 1
+	2025-07-21 05:37:46,690 INFO spawned: 'cs_services' with pid 15
+	2025-07-21 05:37:46,692 INFO spawned: 'master' with pid 16
+	2025-07-21 05:37:46,694 INFO spawned: 'trace_logs' with pid 17
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1744284933.out was generated on 2025-04-10 11:35:34 (total:1)
+	2025-07-21 05:37:46,757 INFO success: cs_services entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+	2025-07-21 05:37:46,757 INFO success: master entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+	2025-07-21 05:37:46,757 INFO success: trace_logs entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1744336672.out was generated on 2025-04-11 01:57:52 (total:2)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1744479307.out was generated on 2025-04-12 17:35:07 (total:3)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1744582625.out was generated on 2025-04-13 22:17:04 (total:4)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1745855056.out was generated on 2025-04-28 15:44:16 (total:5)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1748578610.out was generated on 2025-05-30 04:16:50 (total:6)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1751595902.out was generated on 2025-07-04 02:25:02 (total:7)
+	2025-07-21 05:37:46 ERROR   :: Module <trace_logs> :: trace2001-0-1751906350.out was generated on 2025-07-07 16:39:11 (total:8)
+	Unable to import cx_Oracle
+	2025-07-21 05:37:47,522 INFO    :: Configuring Content Server
+	2025-07-21 05:37:47,525 INFO    :: Performing pre-flight environment setup
+	2025-07-21 05:37:47,539 INFO    :: Calling custom script /opt/opentext/container_files/custom_config/pre_config_scripts/config-cmis.sh...
+	2025-07-21 05:37:47,552 INFO    :: Calling custom script /opt/opentext/container_files/custom_config/pre_config_scripts/config-eh.sh...
+	2025-07-21 05:37:48,152 INFO    :: Calling custom script /opt/opentext/container_files/custom_config/pre_config_scripts/config-sfdc.sh...
+	2025-07-21 05:37:49,060 INFO    :: Downloading systemcenter manifest file
+	2025-07-21 05:37:53,719 WARNING :: Request wget https://mimage.opentext.com/support/ecm/systemcenter/manifest.zip -P /opt/opentext/extensions failed with return code: 4
+	Return value:
+	Silently retrying the request forever...
+	2025-07-21 05:38:56,209 INFO    :: Installing language packs
+	2025-07-21 05:38:58,511 WARNING :: Request /opt/opentext/container_files/bash/sc-cli.sh install_language_packs /opt/opentext/extensions/manifest.zip failed with return code: 1
+	Return value: command: sc-cli.sh install_language_packs /opt/opentext/extensions/manifest.zip
+	07/21/2025 14:38:57 INFO  CLI Version: 23.2.0.171
+	07/21/2025 14:38:57 INFO  Processing command: -e -o /tmp/systemcenter -a otcs -c language -t core -p /opt/opentext/extensions/language_packs -i /opt/opentext/cs -l INFO -m /opt/opentext/extensions/manifest.zip
+	07/21/2025 14:38:57 INFO  Output directory: /tmp/systemcenter
+	07/21/2025 14:38:57 INFO  Logs directory: /tmp/systemcenter/logs/otsc.log
+	07/21/2025 14:38:58 ERROR Error on ZipFile /opt/opentext/extensions/manifest.zip
+	java.io.IOException: Error on ZipFile /opt/opentext/extensions/manifest.zip
+			at org.apache.commons.compress.archivers.zip.ZipFile.<init>(ZipFile.java:452) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.<init>(ZipFile.java:329) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.<init>(ZipFile.java:270) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.<init>(ZipFile.java:224) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.<init>(ZipFile.java:175) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at com.opentext.sc.common.manager.UpdateManager.extractManifestZipPackage(UpdateManager.java:105) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at com.opentext.sc.common.manager.UpdateManager.processManifestUpdate(UpdateManager.java:243) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at com.opentext.sc.cli.ManifestManager.processManifestPackage(ManifestManager.java:326) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at com.opentext.sc.cli.ManifestManager.updateManifest(ManifestManager.java:99) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at com.opentext.sc.cli.Main.main(Main.java:145) ~[com.opentext.sc.cli.jar:23.2.0.171]
+	Caused by: java.util.zip.ZipException: Archive is not a ZIP archive
+			at org.apache.commons.compress.archivers.zip.ZipFile.positionAtEndOfCentralDirectoryRecord(ZipFile.java:1288) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.positionAtCentralDirectory(ZipFile.java:1164) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.populateFromCentralDirectory(ZipFile.java:782) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			at org.apache.commons.compress.archivers.zip.ZipFile.<init>(ZipFile.java:445) ~[com.opentext.sc.cli.jar:23.2.0.171]
+			... 9 more
+	07/21/2025 14:38:58 WARN  Catalog zip file was not found in manifest package.
+	07/21/2025 14:38:58 ERROR Failed to update mainfest.
+
+	Silently retrying the request 0 more times...
+	2025-07-21 05:39:01,965 ERROR   :: Unhandled exception
+	Traceback (most recent call last):
+	  File "/opt/opentext/container_files/python/contentserver.py", line 2299, in <module>
+		my_content_server.configure_content_server()
+	  File "/opt/opentext/container_files/python/contentserver.py", line 271, in configure_content_server
+		self.pre_flight_environment_setup()
+	  File "/opt/opentext/container_files/python/contentserver.py", line 485, in pre_flight_environment_setup
+		self.install_extensions()
+	  File "/opt/opentext/container_files/python/contentserver.py", line 1598, in install_extensions
+		assert current_request.worked, f"Error while installing {key}. Script terminated with status code: {current_request.return_code}"
+	AssertionError: Error while installing language packs. Script terminated with status code: 1
+	2025-07-21 05:39:02,092 WARN exited: master (exit status 1; not expected)
+
+	hankeero@myubuntu7-hv:/opt$ kubectl exec -it otcs-admin-0 -- /bin/bash
+	cd /opt/opentext/extensions
+	ls -al
+	wget https://mimage.opentext.com/support/ecm/systemcenter/manifest.zip -P /opt/opentext/extensions
+	mv manifest.zip.9 manifest.zip
+	
+	
+	
+	apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: castlemock
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # 서비스가 제공하는 포트(8080) 프로토콜 정의
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+  - host: castlemock.pentasystem.kr
+    http:
+      paths:
+      - backend:
+          service:
+            name: castlemock
+            port:
+              number: 8080
+        pathType: ImplementationSpecific
+  # TLS 이용 
+  tls:
+  - hosts:
+    - castlemock.pentasystem.kr
+    secretName: xecm-secret
+	
+	
+https://castlemock.pentasystem.kr/castlemock/#/web
