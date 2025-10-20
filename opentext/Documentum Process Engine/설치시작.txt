@@ -1,0 +1,1 @@
+peSetup.exe LAX_VM D:\Java\java-17-openjdk-17.0.10.0.7-2.win.x86_64\bin\java.exe
