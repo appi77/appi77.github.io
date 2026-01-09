@@ -1,0 +1,15 @@
+▣ dfc.globalregistry.password 변경
+cd da\WEB-INF\classes
+D:\Java\jdk1.6.0_45\bin\java.exe  -cp .;../lib/dfc.jar com.documentum.fc.tools.RegistryPasswordUtils  Admin@2024  
+
+
+
+dmbasic -fD:\Documentum\product\7.2\bin\dd_populate.ebs -pSmartRepository ecmadmin Admin@2024 D:\Documentum\dba\config\SmartRepository\data_dictionary.ini -eEntry_Point
+
+▣ dar 설치
+D:\Documentum\product\7.2\install\composer\ComposerHeadless\dardeployer.exe 를 관리자권한으로 실행
+D:\Documentum\product\7.2\install\DARsInternal dar 하나씩 설치
+webtop.dar를 처음에 설치한다
+
+
+SET DM_CRYPTO_MIN_PASSWORD_LENGTH=8

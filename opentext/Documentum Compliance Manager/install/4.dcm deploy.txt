@@ -1,0 +1,18 @@
+▣ webtop 16.4 + dcm6.7sp2 + Content Server 7.2
+Content Server 7.2에서 사용하기 위해서는 아래 파일을 제거 한다
+webcomponent\config\actions\mail_message_actions.xml
+webcomponent\config\library\messagearchive\attributes_mail_component.xml
+webcomponent\config\library\messagearchive\attributes_mail_component.xml
+webcomponent\config\library\messagearchive\attributes_mail_docbaseattributelist.xml
+webcomponent\config\library\messagearchive\docbaseobjectconfiguration_mailmessage.xml
+
+▣ webtop nativesetup / ucf-client 재설치
+크롬 확장프로그램에서 삭제
+C:\Users\p00022\Documentum\ucf
+C:\Users\p00022\AppData\Local\OpenText
+
+▣ webtop native 환경
+vcredist_x64.exe
+jre 설치필요
+
+

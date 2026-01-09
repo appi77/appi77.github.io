@@ -1,0 +1,9 @@
+queue,c,090210858028912b,'dm_autorender_win31',rendition,0,F,,'legacy_to_PDF'
+queue,c,090210858028912b,'dm_autorender_win31',rendition,0,F,,'rendition_req_ps_pdf' <=dcm에서 검증됨
+queue,c,090210858028912b,'dm_fulltext_index_user',dm_save,0,F,,
+queue,c,090210858028912b,'dm_fulltext_index_user',dm_destroy,0,F,,
+item_id, name, event, message
+
+
+select count(*)  from dmi_queue_item_s where ( name ='dm_fulltext_index_user' and event = 'dm_save')
+or ( name ='dm_autorender_win31' and event = 'rendition')

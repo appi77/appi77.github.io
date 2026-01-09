@@ -1,0 +1,3 @@
+Documentum Webtop - Need to install NativeSetup silently for all users
+
+"NativeSetup.exe -i silent -D$USER_INSTALL_DIR$="C:\Program Files"

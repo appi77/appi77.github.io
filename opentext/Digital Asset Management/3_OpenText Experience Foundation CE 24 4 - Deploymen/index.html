@@ -1,0 +1,7315 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://appi77.github.io/opentext/Digital%20Asset%20Management/3_OpenText%20Experience%20Foundation%20CE%2024%204%20-%20Deploymen/">
+      
+      
+        <link rel="prev" href="../2_OpenText%20EFC%26DAM%20%EC%84%A4%EC%B9%98%20%ED%99%98%EA%B2%BD%20%EB%A7%8C%EB%93%A4%EA%B8%B0%202107/">
+      
+      
+        <link rel="next" href="../../Documentum%20Administrator/Tomcat%20%EC%84%A4%EC%A0%95/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>EFC 배포가이드 - </title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles/logo.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#opentext-experience-foundation-ce-244-deployment-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="" class="md-header__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EFC 배포가이드
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="" class="md-nav__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../8_mkdocs_manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs 매뉴얼
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../9_site_management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    사이트 관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Database/tunning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    문제 있는 쿼리 찾기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PostgreSQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Database/PostgreSQL/PostgreSQL%20%EC%84%A4%EC%B9%98%20%EB%98%90%EB%8A%94%20%EC%99%B8%EB%B6%80%20DB%20%EC%97%B0%EA%B2%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL 설치 또는 연결 with Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Network/DNS%EA%B4%80%EB%A0%A8%20%EC%A0%95%EB%A6%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNS관련 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NFS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Network/NFS/NFS%20%EC%84%9C%EB%B2%84%20%EC%84%A4%EC%B9%98-Ubuntu%EC%97%90%EC%84%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS 서버 설치 (Ubuntu에서)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Network/NFS/Windows%202022%20Core%20NFS%20%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows 2022 Core NFS 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Network/NFS/%EB%8F%99%EC%A0%81%20NFS%20%ED%94%84%EB%A1%9C%EB%B9%84%EC%A0%80%EB%84%88%20%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    동적 NFS 프로비저너 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMWare
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VMWare
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../VMWare/ESXi%206.7%20update%20patch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESXi 6.7 update patch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../VMWare/RDM%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESXi RDM 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../VMWare/download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download 참고
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Daily life
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Daily life
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stock
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Stock
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/stock/%EA%B8%B0%EA%B4%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    기관/외인의 동향
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    건강
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    건강
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EA%B1%B4%EA%B0%95/%EB%AA%85%EC%9D%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    명의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EA%B1%B4%EA%B0%95/%EC%86%8C%EC%9D%8C%EC%9D%B8%EC%97%90%EA%B2%8C-%EC%A2%8B%EC%9D%80-%EC%9D%8C%EC%8B%9D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소음인에게 좋은 음식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EA%B1%B4%EA%B0%95/%ED%95%B4%EB%8F%85%EC%A3%BC%EC%8A%A4-%EC%B2%AD%ED%98%88%EC%A3%BC%EC%8A%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    해독주스 / 청혈주스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EA%B1%B4%EA%B0%95/%ED%9A%A8%EB%AA%A8%EB%B9%B5-%EC%B2%9C%EC%97%B0%EB%B0%9C%ED%9A%A8%EB%B9%B5-%EB%B0%9C%ED%9A%A8%EB%B9%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    No Title
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EA%B1%B4%EA%B0%95/%ED%9A%A8%EB%AA%A8%EB%B9%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    효모빵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    신앙생활
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    신앙생활
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EC%8B%A0%EC%95%99%EC%83%9D%ED%99%9C/%EB%A0%88%EC%A7%80%EC%98%A4-%EB%B9%84%EB%B0%80%ED%97%8C%EA%B8%88%EC%99%B8-%ED%9A%8C%EB%B9%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    레지오 비밀헌금외 회비
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EC%8B%A0%EC%95%99%EC%83%9D%ED%99%9C/%EB%AC%B5%EC%A3%BC%EA%B8%B0%EB%8F%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    묵주기도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EC%8B%A0%EC%95%99%EC%83%9D%ED%99%9C/%EC%95%84%EC%B9%A8%EA%B8%B0%EB%8F%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아침기도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EC%8B%A0%EC%95%99%EC%83%9D%ED%99%9C/%EC%A0%80%EB%85%81%EA%B8%B0%EB%8F%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    저녁기도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EC%8B%A0%EC%95%99%EC%83%9D%ED%99%9C/%ED%95%84%EC%88%98-%EC%98%81%ED%99%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    필수 영화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    집수리
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    집수리
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../daily-life/%EC%A7%91%EC%88%98%EB%A6%AC/%EC%97%B4%ED%9A%8C%EC%88%98%EA%B8%B0-%EC%A0%84%EC%B2%98%EB%A6%AC-%EA%B0%9C%EC%84%A0%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    전열교환기와 미세먼지
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/Linux%20%EC%97%90%20Content%20Server%20%EC%84%A4%EC%B9%98%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 에 Content Server 설치 환경설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/lvm-to-ext4-migration-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMware LVM → 작은 ext4 파티션 시스템 이전 절차 (CD 부팅 환경 기준)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/samba4-active-directory-%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Samba4 Active Directory 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opentext
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Opentext
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../X-Plans%20%EC%84%B8%EB%B6%80%20%EB%AA%A8%EB%93%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X-Plans 세부 모듈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%EC%A3%BC%EC%9A%94%EB%A7%81%ED%81%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주요링크
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Asset Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital Asset Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_DAM%20%EB%B0%B0%ED%8F%AC%20%EC%A4%80%EB%B9%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INFRA 작업
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_OpenText%20EFC%26DAM%20%EC%84%A4%EC%B9%98%20%ED%99%98%EA%B2%BD%20%EB%A7%8C%EB%93%A4%EA%B8%B0%202107/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFC & DAM 설치 환경 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFC 배포가이드
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFC 배포가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#5-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5단계. PostgreSQL 구성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5단계. PostgreSQL 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터베이스 준비
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-helm-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7단계. Helm Chart 다운로드 및 압축 해제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-opentext-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8단계. OpenText Docker 이미지 다운로드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-creating-the-kubernetes-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9단계. Creating the Kubernetes cluster
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9단계. Creating the Kubernetes cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valuescustomyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        values.custom.yaml 예시 (초기 설정용)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10단계. 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentum Administrator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentum Administrator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Documentum%20Administrator/Tomcat%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tomcat 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentum Content Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentum Content Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Documentum%20Content%20Server/Documentum%20CM%2025.4%20%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentum CM 25.4 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Documentum%20Content%20Server/dm_jms_config%20%EB%B6%80%EC%9E%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dm jms config 부재
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentum Process Engine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentum Process Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Documentum%20Process%20Engine/%EC%84%A4%EC%B9%98%EC%8B%9C%EC%9E%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    설치시작
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intelligent Viewing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Intelligent Viewing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Intelligent%20Viewing/IntelligentViewing_otiv253.properties%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IntelligentViewing_Linux.properties 옵션별 한글 해설 및 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Intelligent%20Viewing/Intelligent_Viewing%20%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intelligent Viewing 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Intelligent%20Viewing/Intelligent_Viewing_LoaderConfig_Full_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intelligent Viewing LoaderConfig Full Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Content Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenText Content Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Content Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/1_Kubernetes%20%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kind 기반 Kubernetes 클러스터 구성
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/2_NFS%20%EC%84%9C%EB%B2%84%20%EC%84%A4%EC%B9%98%20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 NFS 서버 설치 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/2_PostgreSQL%20%EC%84%A4%EC%B9%98%20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/3_%EC%9D%B8%EC%A6%9D%EC%84%9C%20self-signed%20%EC%A0%81%EC%9A%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 인증서 self signed 적용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/5_%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 배포
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/6_%EC%9E%AC%EC%8B%9C%EC%9E%91%20%EB%B0%8F%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/7.%EC%96%B8%EC%96%B4%ED%8C%A9%20%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    언어팩 설치
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/Git_Version_Rollback_Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git 이전 버전 복원 및 배포 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/HSTS%20%EB%B9%84%ED%99%9C%EC%84%B1%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HSTS 비활성 방법(fiddler https)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/Kubernetes%20%EC%9E%90%EC%9B%90%EA%B4%80%EB%A6%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes 자원관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/Kubernetes%EC%97%90%EC%84%9C%20Language%20Pack%EA%B3%BC%20Patch%20%EC%A0%81%EC%9A%A9%20%EC%8B%A4%EC%A0%84%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTCS-Frontend 언어팩/패치 적용 절차 (컨테이너 경로 분석 기반)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/OTCS%20%EA%B4%80%EB%A6%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTCS 관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/OTCS%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%9C%84%ED%95%9C%20NFS%20%EB%A7%88%EC%9A%B4%ED%8A%B8%20%EC%A0%88%EC%B0%A8%20%EC%A0%95%EB%A6%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTCS 데이터를 위한 NFS 마운트 절차 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/OTCS%20%ED%99%98%EA%B2%BD%20%ED%8C%8C%EC%9D%BC%20%EC%88%98%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTCS 환경 파일 수정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/OTIV%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%99%B8%EB%B6%80%20%EB%82%B4%EB%B6%80%20%EB%A7%A4%ED%95%91%20%EB%B6%84%EB%A6%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTIV 서비스 외부/내부 매핑 분리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/README_%EC%9A%94%EC%95%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Content Management Helm Chart – 쉬운 설명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/Single%20%EC%84%9C%EB%B2%84%EB%A1%9C%20%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Single 서버로 구성하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management/otiv_port%EB%B0%A9%EC%8B%9D%EC%84%A4%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTIV(뷰어) 포트 분리 방식 설정 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_9" id="__nav_9_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Content Management install
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenText Content Management install
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management-install/CS%EC%84%A4%EC%B9%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Content Server 설치: 핵심 명령어 및 작업 요약
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Content%20Management-install/rocky-linux-rabbitmq-install-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rocky Linux 9에서 RabbitMQ 설치 및 사용자/비밀번호 생성 요약 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_10" id="__nav_9_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Documentum xPlore
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenText Documentum xPlore
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenText%20Documentum%20xPlore/OpenText%20Documentum%20xPlore%20CE%2022.1%20-%20Installation%20Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenText Documentum xPlore CE 22.1   Installation Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_11" id="__nav_9_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brava
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Brava
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../brava/brava-preview-%ED%98%B8%EC%B6%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    livelink에서 brava preview 호출URL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_12" id="__nav_9_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consulting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Consulting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consulting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consulting/Extended_ECM_Business_Workspaces_%EC%8B%A4%EB%AC%B4_%EC%84%A4%EB%AA%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    비즈니스 워크스페이스로의 마이그레이션 – 실무자용 쉬운 설명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consulting/Solution_Paper_Extended_ECM_Migrating_to_Business_Workspaces_summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extended ECM – 비즈니스 워크스페이스로의 마이그레이션 솔루션 페이퍼 요약
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consulting/%EC%BB%A8%EC%84%A4%ED%8C%85_%EC%9E%90%EB%A3%8C_%EB%AC%B8%EC%84%9C%EA%B4%80%EB%A6%AC_%EC%9B%8C%ED%81%AC%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4_%ED%98%84%EC%8B%A4%EA%B3%BC_%EB%8C%80%EC%95%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    문서관리 혁신과 워크스페이스 도입의 현실적 한계 및 대안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_13" id="__nav_9_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentum
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentum
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/centera-da-%EC%84%A4%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Centera DA 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/life-sciences-solution-%EC%84%A4%EC%B9%98%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Life Sciences solution 설치방법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    관리를 위해 자주쓰는 DQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_13_5" id="__nav_9_13_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_13_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_13_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/configration/da-%EC%84%A4%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DA 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/configration/database-tunning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database tunning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_13_6" id="__nav_9_13_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_13_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_13_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Install
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/install/linux-%EC%97%90-content-server-%EC%84%A4%EC%B9%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 에 Content Server 설치 환경설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_13_7" id="__nav_9_13_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_13_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_13_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Performance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/performance/link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Link
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_13_8" id="__nav_9_13_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trouble
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_13_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_13_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Trouble
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentum/trouble/documentum-content-server-hostname-%EB%B3%80%EA%B2%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentum content server hostname 변경
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/GS%EA%B1%B4%EC%84%A4%20%E6%96%B0%EB%AC%B8%EC%84%9C%EA%B4%80%EB%A6%AC%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%82%AC%EC%97%85%20%EC%88%98%ED%96%89%20%EA%B3%84%ED%9A%8D%EC%84%9C%20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GS건설 新문서관리시스템 사업 수행 계획서 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pc환경 수정
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pc환경 수정
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/pc%ED%99%98%EA%B2%BD-%EC%88%98%EC%A0%95/%EC%9C%88%EB%8F%84%EC%9A%B010-onedrive-%EC%82%AD%EC%A0%9C-%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    윈도우10 OneDrive 삭제 방법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/pc%ED%99%98%EA%B2%BD-%EC%88%98%EC%A0%95/%ED%8C%8C%EC%9D%BC-%ED%83%90%EC%83%89%EA%B8%B0%EC%9D%98-%EB%82%B4-pc%EC%97%90-%EC%9E%88%EB%8A%94-%EA%B8%B0%EB%B3%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%B4%EB%8D%94-%EC%88%A8%EA%B8%B0%EA%B8%B0-%EB%B3%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    파일 탐색기의 내 PC에 있는 기본 데이터 폴더 숨기기/보이기 – Windows 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Si technology
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Si technology
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DEBUG사례] BSOD / nt!ObpCaptureHandleInformation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/windbg-%EC%82%AC%EC%9A%A9%EB%B2%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windbg 사용 및 분석 방법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%ED%8F%90%EC%87%84%EB%A7%9D-%EC%86%8D%EB%8F%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    폐쇄망 속도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_4" id="__nav_11_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Debug
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/application-memory-dump-%EB%82%A8%EA%B8%B0%EA%B8%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Dump(crash dump) 남기기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/crash-dump-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crash Dump Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/debug%EC%82%AC%EB%A1%80-bsod-ntobpcapturehandleinformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DEBUG사례] BSOD / nt!ObpCaptureHandleInformation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/debug%EC%82%AC%EB%A1%80-ntdll_771d0000rtlentercriticalsection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DEBUG사례] ntdll_771d0000!RtlEnterCriticalSection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/memory-dump-analysis-anthology-volume-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Dump Analysis Anthology, Volume 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/symbol-%ED%99%95%EC%9D%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    symbol 확인 및 로드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/windbg-mex-debugging-extension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    windbg – MEX Debugging Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/windbg-x64-sos-%ED%99%95%EC%9E%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    windbg – x64 SOS 확장
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/windbg-%EB%AA%85%EB%A0%B9%EC%96%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    windbg 명령어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/windbg-%EC%82%AC%EB%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WinDbg 사례
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/debug/%EC%9D%B8%EC%8B%9D%ED%95%A0-%EC%88%98-%EC%97%86%EB%8A%94-%EA%B5%AC%EC%84%B1-%EC%84%B9%EC%85%98-startup%EC%9E%85%EB%8B%88%EB%8B%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [DEBUG사례] Unrecognized configuration section appSettings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_5" id="__nav_11_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mail
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mail
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/mail/telnet%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-smtp-%ED%85%8C%EC%8A%A4%ED%8A%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    telnet을 이용한 smtp 테스트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_6" id="__nav_11_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rdbms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rdbms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/rdbms/sql_profile%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%B9%84%ED%9A%A8%EC%9C%A8sql-%EB%AC%B8%EC%9E%A5-plan-fix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL_PROFILE을 통한 비효율SQL 문장 plan fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/rdbms/%EB%AC%B8%EC%A0%9C-%EC%9E%88%EB%8A%94-%EC%BF%BC%EB%A6%AC-%EC%B0%BE%EA%B8%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    문제 있는 쿼리 찾기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/rdbms/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%8C%8C%ED%8B%B0%EC%85%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    오라클 파티션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_7" id="__nav_11_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Was
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Was
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/was/tomcat-%ED%8A%9C%EB%8B%9D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tomcat 튜닝
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/was/tomcat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tomcat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_8" id="__nav_11_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows 문제해결
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows 문제해결
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/windows-%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/windows-10-%EA%B8%B0%EB%B3%B8-%EC%95%B1-%EC%82%AD%EC%A0%9C-%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows 10 기본 앱 삭제 방법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/windows-%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/windows-trustedinstaller-%EA%B6%8C%ED%95%9C-%EA%B4%80%EB%A0%A8-%EB%A9%94%EC%8B%9C%EC%A7%80-%EB%B0%9C%EC%83%9D-%EC%8B%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    windows TrustedInstaller 권한 관련 메시지 발생 시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_9" id="__nav_11_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    성능
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    성능
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%EC%84%B1%EB%8A%A5/jmeter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jmeter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%EC%84%B1%EB%8A%A5/%EA%B5%AC%EA%B8%80-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%86%8D%EB%8F%84-%EC%B8%A1%EC%A0%95-%EC%82%AC%EC%9D%B4%ED%8A%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구글 웹사이트 속도 측정 사이트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_10" id="__nav_11_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    이것저것
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    이것저것
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%EC%9D%B4%EA%B2%83%EC%A0%80%EA%B2%83/php-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP 웹페이지
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%EC%9D%B4%EA%B2%83%EC%A0%80%EA%B2%83/vmware-%ED%8A%9C%EB%8B%9D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMWare 튜닝
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%EC%9D%B4%EA%B2%83%EC%A0%80%EA%B2%83/%EB%85%B8%ED%8A%B8%EB%B6%81-wifi-ap%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    노트북 WiFi  AP로 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_11" id="__nav_11_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    컨텐츠 처리
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    컨텐츠 처리
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../si-technology/%EC%BB%A8%ED%85%90%EC%B8%A0-%EC%B2%98%EB%A6%AC/%ED%8F%AC%ED%86%A0%EC%83%B5-%EB%BD%80%EC%83%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    포토샵 뽀샵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/tip1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tip1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/tip2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tip2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vscode
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vscode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vscode/ssh%20base%20project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ssh base project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    보안
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    보안
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_1" id="__nav_14_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 SSL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1 SSL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%EB%B3%B4%EC%95%88/1_SSL/%EC%9D%B8%EC%A6%9D%EC%84%9C-self-signed%20%EC%A0%81%EC%9A%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    인증서 (self-signed) 적용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#5-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5단계. PostgreSQL 구성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5단계. PostgreSQL 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터베이스 준비
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-helm-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7단계. Helm Chart 다운로드 및 압축 해제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-opentext-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8단계. OpenText Docker 이미지 다운로드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-creating-the-kubernetes-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9단계. Creating the Kubernetes cluster
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9단계. Creating the Kubernetes cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valuescustomyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        values.custom.yaml 예시 (초기 설정용)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10단계. 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="opentext-experience-foundation-ce-244-deployment-guide">OpenText Experience Foundation CE 24.4 - Deployment Guide</h1>
+<hr />
+<hr />
+<hr />
+<hr />
+<h2 id="5-postgresql"><strong>5단계. PostgreSQL 구성</strong></h2>
+<hr />
+<h3 id="_1">데이터베이스 준비</h3>
+<pre><code class="language-bash"># /home/damadmin/opentext-experience-cloud/scripts/manual-scripts/database
+#postgres-create-otds-database.sh 수정
+NOSUPERUSER -&gt; SUPERUSER 
+
+drop DATABASE expcloud ;
+drop DATABASE expai; 
+drop DATABASE otds; 
+drop DATABASE rma;
+drop user expclouduser;
+drop user expaiuser;
+drop user otdsuser;
+drop user rmauser;
+\q
+#초기화
+sudo -u postgres psql
+q
+</code></pre>
+<p>./expcloud-setup-databases.sh -dbHost <a href="http://mypostgres.company.com/">mypostgres.company.com</a> 
+-dbAdminPwd <password for postgres user> -otdsUserPwd <password for
+otdsUser> -expcloudUserPwd <password for expcloudUser> -rmaUserPwd
+<password for rmaUser> -expaiUserPwd <password for expaiUser></p>
+<pre><code class="language-bash">cd /home/damadmin/opentext-experience-cloud/scripts/manual-scripts/database
+./expcloud-setup-databases.sh -dbHost dam-a -dbAdminPwd Admin@2024 \
+-otdsUserPwd Admin@2024 -expcloudUserPwd Admin@2024 -rmaUserPwd Admin@2024 \
+-expaiUserPwd Admin@2024
+</code></pre>
+<pre><code class="language-bash"> otds        | otdsuser 
+ otmm_db     | otmmuser 
+ rma         | rmauser  
+</code></pre>
+<h2 id="7-helm-chart"><strong>7단계. Helm Chart 다운로드 및 압축 해제</strong></h2>
+<pre><code class="language-bash">helm repo add opentext [https://registry.opentext.com/helm](https://registry.opentext.com/helm) --username kwpark@penta.co.kr \
+--password SystemAdmin@2024
+helm repo update
+helm search repo opentext
+helm pull opentext/opentext-experience-cloud --version=25.2 --untar
+cd opentext-mediamanagement
+</code></pre>
+<h2 id="8-opentext-docker"><strong>8단계. OpenText Docker 이미지 다운로드</strong></h2>
+<pre><code class="language-bash">~~### OpenText 지원 계정으로 로그인
+docker login registry.opentext.com
+
+docker login registry.opentext.com
+docker pull registry.opentext.com/experience-ai-api:24.4.0         
+docker pull registry.opentext.com/experience-ai-config:24.4.0      
+docker pull registry.opentext.com/experience-cloud-config:24.4.0   
+docker pull registry.opentext.com/experience-cloud-rabbitmq:3.13.6 
+docker pull registry.opentext.com/otds-server:24.4.0               
+docker pull registry.opentext.com/rma_base:24.4.0~~          
+</code></pre>
+<p>nfs-csi-driver 설치</p>
+<pre><code class="language-bash">mkdir -p ~/nfs-csi-driver
+cd ~/nfs-csi-driver
+
+curl -LO https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/v4.6.0/deploy/install-driver.sh
+chmod +x install-driver.sh
+./install-driver.sh
+</code></pre>
+<h2 id="9-creating-the-kubernetes-cluster">9단계. Creating the Kubernetes cluster</h2>
+<h3 id="valuescustomyaml"><code>values.custom.yaml</code> 예시 (초기 설정용)</h3>
+<pre><code class="language-yaml"># Default values for Experience Cloud helm chart.
+# This is a YAML-formatted file.
+# ===================================================
+# BEGIN: ANCHOR tags section 
+# ===================================================
+
+# ------------------------------------
+# Section to enable services on Experience Cloud
+# ------------------------------------
+
+# This determines whether OTDS is deployed or not. If left blank, default value will be true
+otdsEnabled: &amp;otdsEnabled true
+
+# This determines whether RabbitMQ is deployed or not. If left blank, default value will be true
+rabbitmqEnabled: &amp;rabbitmqEnabled true
+
+# This determines whether Assisted Authoring is deployed or not. If left blank, default value will be true
+assistedAuthoringEnabled: &amp;assistedAuthoringEnabled false
+
+# This determines whether RMA is deployed or not. If left blank, default value will be true
+rmaEnabled: &amp;rmaEnabled false
+
+# This determines whether the Experience Cloud Persistence Service and Admin UI is deployed or not. If left blank, default value will be true
+expcloudServiceEnabled: true
+
+# ------------------------------------
+# Experience Cloud Options
+# ------------------------------------
+
+# The name of the tenant to be create in OTDS
+tenantName: &amp;tenantName otxf
+
+# The username for OTDS account when creating the tenant in OTDS.
+tenantAdminUsername: &amp;tenantAdminUsername admin
+
+# The password to give the &quot;admin&quot; account when creating the tenant in OTDS.  This password must adhere to the 
+# default OTDS password policy, which is:
+#   Minimum eight characters
+#   At least one lower case character
+#   At least one upper case character
+#   At least one number
+#   At least one symbol
+tenantAdminPassword: &amp;tenantAdminPassword Admin@2024
+
+# The password for otexpcadmin
+# When left empty, the otexpcadmin user will use the password from the tenantAdminPassword setting. 
+# When upgrading, please ensure that if this password has been changed that it is updated here as this is required for the upgrade.
+expCloudPassword: &amp;expCloudPassword 
+
+
+# Accessing deployed Services
+# ------------------------------------------
+# The hostname that will be used to configure ingress access to deployed services. For example: otds.company.com
+# - When deploying to minikube, set this value to the empty 
+publicHostname: &amp;publicHostname dam-a.ecm.my
+
+# The URL scheme that will be used to configure secure access(https) to the deployed services.
+# Set to true if using HTTPS, false otherwise
+# For example: https://otds.company.com, here &quot;useHttps&quot; is set to true
+useHttps: &amp;useHttps true
+
+# The configuration hostname used to configure services using a browser.
+# The default value is the publicHostname - 
+# - when deploying to minikube or instance with reverse proxy, set this value to the reverse proxy hostname
+configHostname: *publicHostname
+
+# The Ingress Controller class value. For example, &quot;nginx&quot;.
+ingressClass: &amp;ingressClass nginx
+
+# The name of the secret that contains a TLS certificate for the Ingress Controller. 
+# For more information about creating a secret with a TLS certificate, see the Kubernetes documentation. 
+# If no certificate is provided, the Ingress Controller will use the default certificate.  This setting 
+# is Optional.
+ingressSecret: &amp;ingressSecret tls-secret
+
+# Enable ingress.
+ingressEnabled: &amp;ingressEnabled true
+
+# The Read Write Once Storage Class to be used by any Experience Cloud service that requires it
+rwoStorageClass: &amp;rwoStorageClass standard
+#rwoStorageClass: &amp;rwoStorageClass otmm-nfs
+#rwxStorageClass: &amp;rwxStorageClass otmm-nfs
+
+# Default image pull policy for Experience Cloud services
+imagePullPolicy: &amp;imagePullPolicy Always
+
+# The JDBC connection string to connect to the database. The database name must match the database 
+# created before installing the Helm chart. The format is: 
+# Postgres: jdbc:postgresql://&lt;Database server URL&gt;:&lt;Databse port&gt;/&lt;Database name&gt;
+# MSSQL: jdbc:sqlserver://&lt;Database server URL&gt;:&lt;Databse port&gt;;databaseName=&lt;Database name&gt;;
+# Oracle (SID): jdbc:oracle:thin:@&lt;Database server URL&gt;:&lt;Databse port&gt;:&lt;SID&gt;
+# Oracle (Service name): jdbc:oracle:thin:@&lt;Database server URL&gt;:&lt;Databse port&gt;/&lt;Service name&gt;
+# Below are a few examples showing Postgres, MSSQL and Oracle connection strings:
+# jdbc:postgresql://postgres.domain.local:5432/expcloud
+# jdbc:sqlserver://mssql.domain.local:1433;databaseName=expcloud;
+# jdbc:sqlserver://mssql.domain.local:1433;databaseName=expcloud;encrypt=false
+# jdbc:oracle:thin:@oracle.domain.local:1521/orcl
+expcloudDBUrl: &quot;jdbc:postgresql://dam-a.ecm.my:5432/expcloud&quot;
+
+# The database user that was set up when creating the Experience Cloud database.
+expcloudDBUser: expclouduser
+
+# The database user password that was set up when creating the Experience Cloud database.
+expcloudDBUserPassword: demo.9700
+
+# The Allowed Origins setting used by the Experience Cloud Persistence Service
+expcloudAllowedOrigins: &quot;*&quot;
+
+# If you are using the OpenText Container Registry, or a private registry that requires credentials, 
+# provide the name of the Kubernetes secret that contains the credentials. For information about 
+# creating the secret, see the Kubernetes documentation.  This setting is Optional.
+# This is image pull secret as string
+imagePullSecret: &amp;imagePullSecret opentext-docker-secret
+
+# If you are using the OpenText Container Registry, or a private registry that requires credentials, 
+# provide the name of the Kubernetes secret that contains the credentials. For information about 
+# creating the secret, see the Kubernetes documentation.  This setting is Optional.  Here is an
+# example of the format:
+# imagePullSecrets: &amp;imagePullSecrets
+#   - name: image-pull-secret
+imagePullSecrets: &amp;imagePullSecrets 
+  - name: opentext-docker-secret
+# The timeout for Experience AI, RabbitMQ and OTDS configuration by the ECF Config pod in minutes. 
+# Default value is 5 minutes.
+timeout: 5
+
+# The Service Account to create and use for all Experience Cloud Foundation services.
+serviceAccount: &amp;serviceAccount &quot;experience-cloud-sa&quot;
+
+# Set to false if the Service Account already exists before Experience Cloud Foundation is installed
+# to prevent Helm from attempting to manage it.
+createServiceAccount: true
+
+# ------------------------------------
+# Vault Options
+# ------------------------------------
+# These Vault options are meant to be used with OpenText's internal Vault system.  For installations
+# outside of OpenText's internal managed services, these options should be ignored.
+
+# The address to access the Vault instance.
+vaultUrl: &amp;vaultUrl 
+
+# The namespace where vault is present. private-cloud is default namespace
+vaultNamespace: &amp;vaultNamespace private-cloud
+
+# vault authentication type
+vaultAuthenticationType: &amp;vaultAuthenticationType jwt
+
+# Secret engine path
+vaultSecretEnginePath: &amp;vaultSecretEnginePath 
+
+# Authentication role
+vaultAuthenticationRole: &amp;vaultAuthenticationRole 
+
+# Authentication Path
+vaultAuthenticationPath: &amp;vaultAuthenticationPath 
+
+# OTDS Specific vault properties
+# The flag to decide whether vault should be enabled for OTDS or not. Default value is false
+vaultEnabled: &amp;vaultEnabled false
+
+# Secret engine path for OTDS
+# Value should vaultSecretEnginePath suffixed with /otds
+vaultOtdsSecretEnginePath: &amp;vaultOtdsSecretEnginePath 
+
+# ------------------------------------
+# Section to configure registry for services on Experience Cloud
+# ------------------------------------
+
+# The registry to pull the Experience Cloud containers from
+experienceCloudRegistry: &amp;experienceCloudRegistry registry.opentext.com
+
+# The container registry to pull the OTDS images from. For example: docker-registry.company.com.
+otdsRegistry: &amp;otdsRegistry registry.opentext.com
+
+# The registry for the Assisted Authoring container images
+assistedAuthoringRegistry: &amp;assistedAuthoringRegistry 
+
+# The registry for RMA service container image
+rmaRegistry: &amp;rmaRegistry 
+
+# ------------------------------------
+# OTDS Options
+# ------------------------------------
+
+# The JDBC connection string to connect to the database. The database name must match the database 
+# that was created for OTDS. The format is: 
+# Postgres: jdbc:postgresql://&lt;Database server URL&gt;:&lt;Databse port&gt;/&lt;Database name&gt;
+# MSSQL: jdbc:sqlserver://&lt;Database server URL&gt;:&lt;Databse port&gt;;databaseName=&lt;Database name&gt;;
+# Oracle (SID): jdbc:oracle:thin:@&lt;Database server URL&gt;:&lt;Databse port&gt;:&lt;SID&gt;
+# Oracle (Service name): jdbc:oracle:thin:@&lt;Database server URL&gt;:&lt;Databse port&gt;/&lt;Service name&gt;
+# Below are a few examples showing Postgres, MSSQL and Oracle connection strings:
+# jdbc:postgresql://postgres.domain.local:5432/otds
+# jdbc:sqlserver://mssql.domain.local:1433;databaseName=otds;
+# jdbc:sqlserver://mssql.domain.local:1433;databaseName=otds;encrypt=false
+# jdbc:oracle:thin:@oracle.domain.local:1521/orcl 
+otdsDBUrl: &amp;otdsDBUrl &quot;jdbc:postgresql://dam-a.ecm.my:5432/otdsdb&quot;
+
+# The database user that was set up when creating the OTDS database.  If using Oracle it is recommended to set 
+# otds.otdsws.otdsdb.useDefaultSchema to &quot;true&quot; or else OTDS will try to create another user called &quot;OTDS&quot;.
+otdsDBUser: &amp;otdsDBUser otdsuser
+
+# The database user password that was set up when creating the OTDS database.
+otdsDBUserPassword: &amp;otdsDBUserPassword demo.9700
+
+# cryptKey is used for secure synchronized access to backend DB from frontend instances
+# This value is a 16 character ASCII string that has been base64 encoded
+# For example, &quot;MTIzNDU2Nzg5YWNiZGVmZw==&quot; is the base64 encoded value of &quot;123456789acbdefg&quot;
+otdsCryptKey: &amp;otdsCryptKey MTIzNDU2Nzg5YWNiZGVmZw==
+
+# The user otadmin@otds.admin will be created in the OTDS System tenant. This parameter will set this 
+# user's password.
+otadminPassword: &amp;otadminPassword demo.9700
+
+# ------------------------------------
+# Rabbitmq Options
+# ------------------------------------
+
+# User to create in RabbitMQ
+rabbitmqUsername: &amp;rabbitmqAppUser expcloud
+
+# Password for user to create in RabbitMQ
+rabbitmqPassword: &amp;rabbitmqAppPassword demo.9700
+
+#RabbitMQ Admin username
+rabbitmqAdminUsername: &amp;rabbitmqAdminUsername admin
+
+#RabbitMQ Admin password
+rabbitmqAdminPassword: &amp;rabbitmqAdminPassword demo.9700
+
+# ------------------------------------
+# Assisted Authoring Options
+# ------------------------------------
+
+# The JDBC connection string to connect to the database. The database name must match the database 
+# created before installing the Helm chart. The format is: 
+# Postgres: jdbc:postgresql://&lt;Database server URL&gt;:&lt;Databse port&gt;/&lt;Database name&gt;
+# MSSQL: jdbc:sqlserver://&lt;Database server URL&gt;:&lt;Databse port&gt;;databaseName=&lt;Database name&gt;;
+# Oracle (SID): jdbc:oracle:thin:@&lt;Database server URL&gt;:&lt;Databse port&gt;:&lt;SID&gt;
+# Oracle (Service name): jdbc:oracle:thin:@&lt;Database server URL&gt;:&lt;Databse port&gt;/&lt;Service name&gt;
+# Below are a few examples showing Postgres, MSSQL and Oracle connection strings:
+# jdbc:postgresql://postgres.domain.local:5432/expai
+# jdbc:sqlserver://mssql.domain.local:1433;databaseName=expai;
+# jdbc:sqlserver://mssql.domain.local:1433;databaseName=expai;encrypt=false
+# jdbc:oracle:thin:@oracle.domain.local:1521/orcl 
+expaiDBUrl: &amp;expaiDBUrl &quot;jdbc:postgresql://dam-a.ecm.my:5432/expai&quot;
+
+# The database user that was set up when creating the Experience AI database.
+expaiDBUser: &amp;expaiDBUser &quot;expaiuser&quot;
+
+# The database user password that was set up when creating the Experience AI database.
+expaiDBUserPassword: &amp;expaiDBUserPassword &quot;demo.9700&quot;
+
+# If Magellan Text Mining Service is installed, provide the URL and details here and a provider will be created
+# with some default settings automatically.  Leave this blank and all of the other Magellan settings below are ignored.
+# The settings this provider are created with can be edited using the Config UI. The URL for Magellan as Provider. 
+# The format for this field is: http://&lt;service name&gt;.&lt;namespace&gt;.svc.cluster.local:&lt;port&gt;/rs/v2/.  This provider will 
+# only be configured during an install and will not be configured during an upgrade.
+providerMagellanUrl: &amp;providerMagellanUrl 
+
+# The name of the Magallan Provider to be created
+providerMagellanName: &amp;providerMagellanName magellan
+
+# The Magellan Text Mining Service user to use.  This should match the field &quot;credentials.engine.user&quot; from the MTM Helm chart.
+providerMagellanUser: &amp;providerMagellanUser admin
+
+# The Magellan Text Mining Service user password in base 64. This should match the field &quot;credentials.engine.password&quot; from the 
+# MTM Helm chart.
+providerMagellanPassword: &amp;providerMagellanPassword YWRtaW4K
+
+# If LanguageTool is installed, provide the URL and details here and a provider will be created
+# with some default settings automatically.  Leave this blank and all of the other LanguageTool settings are ignored.
+# The settings this provider are created with can be edited using the Config UI. The URL for Magellan as Provider. 
+# The format for this field is: http://&lt;service name&gt;.&lt;namespace&gt;.svc.cluster.local:&lt;port&gt;/v2/.  This provider will 
+# only be configured during an install and will not be configured during an upgrade.
+providerLanguageToolUrl: &amp;providerLanguageToolUrl 
+
+# The name of the Language Tool Provider to be created
+providerLanguageToolName: &amp;providerLanguageToolName languagetool
+
+# ------------------------------------
+# RMA Options
+# ------------------------------------
+
+# RMA Database Settings
+databaseHostname: &amp;dbHost dam-a.ecm.my
+databasePort: &amp;dbPort 5432
+# Database type can be &quot;POSTGRESQL&quot;,&quot;SQLSERVER&quot; or &quot;ORACLE&quot;
+databaseType: &amp;dbType &quot;POSTGRESQL&quot;
+rmaDBName: &amp;rmaDBName 
+rmaDBUser: &amp;rmaDBUser rmauser
+rmaDBPassword: &amp;rmaDBPassword demo.9700
+
+# ------------------------------------
+# Section to define proxy for Experience Cloud Services
+# ------------------------------------
+#Define if proxy is enabled or not
+proxyEnabled: &amp;proxyEnabled false
+
+#Proxy host
+proxyHost: &amp;proxyHost 
+
+#Http Proxy port 
+httpProxyPort: &amp;httpProxyPort 3128
+
+# No proxy defines a list of destination domain names, domains, IP addresses or other network CIDRs to exclude proxying.
+# If using a proxy, be sure to include &quot;*.svc.cluster.local&quot; in the noProxy list to avoid having internal traffic proxied.
+noProxy: &amp;noProxy &quot;*.svc.cluster.local&quot;
+
+# ------------------------------------
+# NewRelic Options
+# ------------------------------------
+
+# Enable or disable NewRelic monitoring.
+newRelicEnabled: &amp;newRelicEnabled false
+
+# The license key provided by NewRelic.
+newRelicLicenseKey: &amp;newRelicLicenseKey &quot;&quot;
+
+# The proxy host to use for NewRelic.
+newRelicProxyHost: &amp;newRelicProxyHost &quot;&quot;
+
+# The port number to use with the proxy host for NewRelic.
+newRelicProxyPort: &amp;newRelicProxyPort 
+
+# The scheme to use with the proxy host and port. Values can be &quot;http&quot; or &quot;https&quot;.
+newRelicProxyScheme: &amp;newRelicProxyScheme &quot;&quot;
+
+# The application name to use for OTDS in NewRelic
+newRelicOTDSAppName: &amp;newRelicOTDSAppName &quot;&quot;
+
+# Suffix to add to the end of the application name for Experience AI's API and Config pods.
+newRelicAssistedAuthoringSuffix: &amp;newRelicAssistedAuthoringSuffix &quot;&quot;
+
+# The application name to use for Experience Cloud persistence service in NewRelic
+newRelicExpCloudAppName: expcloud
+
+# ===================================================
+# END: ANCHOR tags section 
+# ===================================================
+
+# ===================================================
+# BEGIN: Detailed product settings.  Any setting
+# below here is either optional or can be left
+# at the default setting.
+# ===================================================
+
+# ------------------------------------
+# Global Options
+# ------------------------------------
+
+# Add extra pod match labels for Experience AI and RabbitMQ deployments, statefulsets, pods and services globally
+# Other serices (Admin UI, OTDS, RMA) do not yet support this.
+# Example:
+# extraPodMatchLabels: &amp;extraPodMatchLabels
+#   matchkey: matchvalue
+extraPodMatchLabels: &amp;extraPodMatchLabels {}
+
+# ------------------------------------
+# Experience Cloud Detailed Options
+# ------------------------------------
+tenant:
+
+  # The name of the tenant to create in OTDS
+  name: *tenantName 
+
+  # The username for admin account when creating the tenant
+  adminUsername: *tenantAdminUsername 
+
+  # The password to give the &quot;admin&quot; account when creating the tenant
+  adminPassword: *tenantAdminPassword
+
+  # The name of the OTDS oAuth client to be created.
+  oAuthClientName: experience-cloud
+
+  # The name of the public (not confidential) OTDS oAuth client to be created.
+  publicOAuthClientName: experience-cloud-public
+
+  # The name of the OTDS partition to be created.
+  partition: experience-cloud
+
+  # The password for the otexpcadmin user
+  expCloudPassword: *tenantAdminPassword
+
+  # Provide the name and password for a user and the user will be created with admin permissions to Experience AI, 
+  # Experience Cloud (read only) and Rich Media Analysis.  Any services not enabled will be skipped.  The password must adhere to
+  # the password policy.  See comments on &quot;tenantAdminPassword&quot; for details on password policy.
+  monitoringUser:
+  monitoringUserPassword:
+
+  # Provide the name and password for a user and the user will be created with admin permissions to Experience AI, 
+  # Experience Cloud and Rich Media Analysis.  Any services not enabled will be skipped. The password must adhere to
+  # the password policy.  See comments on &quot;tenantAdminPassword&quot; for details on password policy.
+  businessAdminUser:
+  businessAdminUserPassword:
+
+# The repository to pull the Experience Cloud containers from
+registry: *experienceCloudRegistry
+
+config:
+
+  # The config pod image
+  image: experience-cloud-config
+
+  # The tag of the config pod
+  tag: 24.4.0
+
+  # The service account the config pod should run as.
+  serviceAccount: *serviceAccount
+
+  # Security context for config job container
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+
+  # Security context for config job pod
+  podSecurityContext:
+    fsGroup: 1000
+    runAsUser: 1000
+
+  # Annotations to include on config pod. Example:
+  # podAnnotations:
+  #   annotation-key: 'annotation-value'
+  podAnnotations: {}
+
+  # Labels to include on config pod. Example:
+  # podLabels:
+  #   label-key: 'label-value'
+  podLabels: {}
+
+  # The number of seconds curl is allowed to wait when communicating with services
+  curlTimeout: 10
+
+service:
+
+  # Number of replicas for the Experience Cloud Persistence Service/Admin UI deployment.
+  replicas: 1
+
+  # The database schema to use for the admin service
+  databaseSchema: expcloud
+
+  # The service pod image
+  image: experience-cloud-service
+
+  # The tag of the service pod
+  tag: 24.4.0
+
+  # The deployment upgrade strategy.  Valid values are &quot;Recreate&quot; or &quot;RollingUpdate&quot;.  Default is &quot;RollingUpdate&quot;.
+  upgradeStrategy: RollingUpdate
+
+  # The service account for the service pod to use.
+  serviceAccount: *serviceAccount
+
+  annotations: {}
+
+  ingress:
+    # The name of the secret that contains a TLS certificate for the Ingress Controller used with Experience Cloud Persistence Service/Admin UI deployment.
+    # For more information about creating a secret with a TLS certificate, see the Kubernetes documentation.
+    # If no certificate is provided, the Ingress Controller will use the default certificate.
+    # This setting is Optional.
+    secret: *ingressSecret
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: &quot;HTTP&quot;
+
+  resources:
+    requests:
+
+      # The CPU request for the Experience Cloud Service container. The default value is 0.5. OpenText recommends 0.5 for 
+      # a small installation and 1 for medium or large installations.  This setting is Optional.
+      cpu: 0.5
+
+      # The memory request for the Experience Cloud Service container. The default value is 1.5Gi. OpenText recommends 
+      # 1.5 for all installation sizes.  This setting is Optional.
+      memory: 1.5Gi
+
+  jvmOptions: &quot;-Xms512m -Xmx1024m&quot;
+
+  # Security context for experience cloud service container 
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+
+  # Security context for experience cloud service pod 
+  podSecurityContext:
+    fsGroup: 1000
+    runAsUser: 1000
+
+  # Annotations to include on Admin UI pods. Example:
+  # podAnnotations:
+  #   annotation-key: 'annotation-value'
+  podAnnotations: {}
+
+  # Labels to include on Admin UI pods. Example:
+  # podLabels:
+  #   label-key: 'label-value'
+  podLabels: {}
+
+  # Provide a custom truststore for the Admin UI so that it can trust certificates that are not trusted by default in Java  
+  truststore:
+
+    # The name of the secret that contains the truststore file.  Create with: 
+    # kubectl create secret generic &lt;name&gt; -n &lt;namespace&gt; --from-file=&lt;truststorePath&gt;
+    # Ex. kubectl create secret generic custom-truststore -n expcloud --from-file=/tmp/cacerts
+    secretName: 
+
+    # The password for the truststore file provided in the secret above.  If left blank, the Admin UI will use the default truststore 
+    password: 
+
+    # The file name of the truststore that was created in the secret above
+    fileName: cacerts
+
+# ------------------------------------
+# OTDS Detailed Options
+# ------------------------------------
+
+# These are the settings to configure OTDS.
+otds:
+
+  enabled: *otdsEnabled
+
+  global:
+    otdsUseReleaseName: true
+    namespace:
+    imageSource: 
+    imageSourcePublic:
+    imagePullSecret:
+    imagePullPolicy: 
+    serviceAccountName: 
+    serviceType:
+    otdsServiceName: otdsws
+    resourceRequirements: true
+    existingSecret:
+    timeZone: Etc/UTC
+    database:
+      adminDatabase:
+      adminUsername:
+    extraPodMatchLabels: *extraPodMatchLabels
+
+  ingress:
+    enabled: *ingressEnabled
+    secret: *ingressSecret
+    class: *ingressClass
+    annotations: 
+#      nginx.ingress.kubernetes.io/rewrite-target: /
+      nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+    exposeIndividualEndpoints: false
+    paths:
+      - &quot;/otds-admin/&quot;
+      - &quot;/otdstenant/&quot;
+      - &quot;/otdsws/&quot;
+      - &quot;/ot-authws/&quot;
+      - &quot;/otds-v2/&quot;
+
+  otdsws:
+    securityContext:
+      fsGroup: 1000
+      runAsGroup: 1000
+      runAsUser: 1000
+      readOnlyRootFilesystem: false
+    podLabels: {}
+    podAnnotations: {}
+    enabled: true
+    serviceAccountName: *serviceAccount
+    statefulSet: false
+    affinity:
+    tolerations:
+    topologySpreadConstraints:
+    ingress:
+      enabled: *ingressEnabled
+      secret:
+      # If changing the prependPath from the default, please be sure set expai.global.env.OTDS_INTERNAL_ADDRESS_OVERRIDE if using
+      # Experience AI and mediaanalysis.global.internal.otds.prependPath if using RMA.
+      prependPath: otds
+    serviceName: otdsws
+    serviceType:
+    serviceAnnotations: {}
+    carrierGradeNAT: true
+    customSecretName:
+    replicas: 1
+    port: 80
+    publicHostname: *publicHostname
+    timeZone:
+    allowDuplicateUsers: true
+    allowNonIndexedSearch: false
+    systemGlobalOAuthClients: &quot;ExstreamSystem&quot;
+    cryptKey: *otdsCryptKey 
+    additionalJavaOpts:
+    enableBootstrapConfig: false
+    existingBootstrapConfig: |
+
+    kerberos:
+      enabled: false
+      keytabFile: |
+
+      configFile: |
+
+    adminEmail:
+    adminPassword: *otadminPassword
+    isBizAdmin: false
+    enableCustomizedTruststore: false
+    singleCaCert: |
+
+    migration:
+      enabled: false
+      usingLegacyImage: false
+      legacyImagePVC:
+      serviceName: opendj
+      servicePort: 1389
+      deploymentName:
+      opendjUri:
+      password:
+      preUpgradeJob:
+        enabled: false
+        timeout: 100h
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 3Gi
+          limits:
+            cpu: 2
+            memory: 3Gi
+          jvmMemory:
+        image:
+          source:
+          name: bitnami/kubectl
+          tag: latest
+    otdsdb:
+      url: *otdsDBUrl
+      username: *otdsDBUser
+      password: *otdsDBUserPassword
+      useDefaultSchema: false
+      automaticDatabaseCreation:
+        enabled: false
+        dbAdmin:
+        dbAdminPassword:
+        dbExtensions:
+          - pg_trgm
+        dbImage:
+          source:
+          name: bitnami/postgresql
+          tag: latest
+          pullPolicy:
+    image:
+      source: *otdsRegistry
+      name: otds-server
+      tag: 24.4.0
+      pullPolicy: *imagePullPolicy
+      pullSecret: *imagePullSecret
+    resources:
+      enabled: true
+      requests:
+        cpu: 0.5
+        memory: 1Gi
+      limits:
+        cpu: 2
+        memory: 1.5Gi
+    newrelic:
+      NEW_RELIC_LICENSE_KEY: *newRelicLicenseKey
+      NEW_RELIC_APP_NAME: *newRelicOTDSAppName
+      NEW_RELIC_LOG_FILE_NAME: STDOUT
+      NEW_RELIC_LOG_LEVEL: info
+      NEW_RELIC_BROWSER_MONITORING_AUTO_INSTRUMENT: &quot;false&quot;
+    pvc:
+      enabled: false
+      storage: 256Mi
+      storageClassName:
+    logging:
+      logToFiles: false
+      logToPVC: false
+      logRequests: true
+    vault:
+      enabled: *vaultEnabled
+      agentInjector: false
+      url: *vaultUrl
+      namespace: *vaultNamespace
+      authpath: *vaultAuthenticationPath
+      tokenAudience:
+      proxyAddress:
+      role: *vaultAuthenticationRole
+      secretsPath: *vaultOtdsSecretEnginePath
+    initContainers:
+
+# ------------------------------------
+# rabbitmq Options
+# ------------------------------------
+rabbitmq:
+    # This determines whether rabbitmq is deployed or not.
+    enabled: *rabbitmqEnabled
+    # Expose the rabbit console through ingress
+    global:
+      extraPodMatchLabels: *extraPodMatchLabels
+    extraConfiguration: |
+      management.path_prefix = /rabbitmq
+      consumer_timeout = 172800000
+    auth:
+      ## @param auth.username RabbitMQ application username
+      ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+      ##
+      username: *rabbitmqAdminUsername
+      ## @param auth.password RabbitMQ application password
+      ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+      ##
+      password: *rabbitmqAdminPassword
+      ## @param auth.erlangCookie Erlang cookie to determine whether different nodes are allowed to communicate with each other
+      ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+      ##
+      erlangCookie: erlangCookie
+
+    # The address to access the Vault instance.
+    vaultUrl: *vaultUrl
+
+    # The namespace where vault is present. private-cloud is default namespace
+    vaultNamespace: *vaultNamespace
+
+    # vault authentication type
+    vaultAuthenticationType: *vaultAuthenticationType
+
+    # Secret engine path
+    vaultSecretEnginePath: *vaultSecretEnginePath
+
+    # Authentication role
+    vaultAuthenticationRole: *vaultAuthenticationRole
+
+    # Authentication Path
+    vaultAuthenticationPath: *vaultAuthenticationPath
+
+    image:
+      # The container registry to pull the images from, as configured in Push the container image. For 
+      # example: docker-registry.company.com.
+      registry: *experienceCloudRegistry
+      # Docker image pull policy: Always, Never, or IfNotPresent
+      # See: https://kubernetes.io/docs/concepts/configuration/overview/#container-images
+      pullPolicy: *imagePullPolicy
+      # The repository name where the image is located. For 
+      # example: rabbitmq
+      repository: experience-cloud-rabbitmq
+      # The image tag to use.
+      tag: 3.13.6
+      # Image pull secret to use for registry authentication.
+      # See: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+      pullSecrets: *imagePullSecrets
+
+    ## Configure the ingress resource that allows you to access the
+    ## RabbitMQ installation. Set up the URL
+    ## ref: https://kubernetes.io/docs/user-guide/ingress/
+    ##
+    ingress:
+      ## @param ingress.enabled Enable ingress resource for Management console
+      ##
+      enabled: *ingressEnabled
+      ## @param ingress.hostname Default host for the ingress resource
+      ##
+      hostname: *publicHostname
+      ## @param ingress.path Path for the default host.
+      ##
+      path:  /rabbitmq
+      # The Ingress Controller class value. For example, &quot;nginx&quot;.  This setting is Optional.
+      ingressClassName: *ingressClass
+      ## @param ingress.annotations Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.
+      annotations: 
+        nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+      ## @param ingress.secrets Custom TLS certificates as secrets
+      ## NOTE: 'key' and 'certificate' are expected in PEM format
+      ## NOTE: 'name' should line up with a 'secretName' set further up
+      ## If it is not set and you're using cert-manager, this is unneeded, as it will create a secret for you with valid certificates
+      ## If it is not set and you're NOT using cert-manager either, self-signed certificates will be created valid for 365 days
+      ## It is also possible to create and manage the certificates outside of this helm chart
+      ## Please see README.md for more information
+      ## e.g:
+      ## secrets:
+      ##   - name: rabbitmq.local-tls
+      ##     key: |-
+      ##       -----BEGIN RSA PRIVATE KEY-----
+      ##       ...
+      ##       -----END RSA PRIVATE KEY-----
+      ##     certificate: |-
+      ##       -----BEGIN CERTIFICATE-----
+      ##       ...
+      ##       -----END CERTIFICATE-----
+      ##
+      secrets: []
+      secretName: *ingressSecret
+    # Was rabbitmqMemoryHighWatermark
+    memoryHighWatermark:
+      enabled: true
+    podManagementPolicy: Parallel
+    # Was persistentVolume
+    persistence:
+      storageClass: *rwoStorageClass
+    # Have to include this, even though we set memoryHighWatermark to absolute, or rabbitmq's helm chart will puke on install
+    resources:
+      requests:
+        cpu: 0.5
+        memory: 1Gi
+      limits:
+        cpu: 2
+        memory: &amp;rabbitmqMemory &quot;2Gi&quot;
+    service:
+      type: ClusterIP
+
+    ## @param containerSecurityContext RabbitMQ containers' Security Context
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
+    ## Example:
+    ##   containerSecurityContext:
+    ##     capabilities:
+    ##       drop: [&quot;NET_RAW&quot;]
+    ##     readOnlyRootFilesystem: true
+    ##
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+
+    ## RabbitMQ pods' Security Context
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+    ## @param podSecurityContext.enabled Enable RabbitMQ pods' Security Context
+    ## @param podSecurityContext.fsGroup Group ID for the filesystem used by the containers
+    ## @param podSecurityContext.runAsUser User ID for the service user running the pod
+    podSecurityContext:
+      enabled: true
+      fsGroup: 1001
+      runAsUser: 1001
+    ## RabbitMQ pods ServiceAccount
+    ## @param serviceAccount.name Name of the created serviceAccount
+    ## If not set and create is true, a name is generated using the rabbitmq.fullname template
+    ## If  not set and create is not set, &quot;default&quot; service account would be used. This is the default value
+    serviceAccount:
+      ## @param serviceAccount.create Enable creation of ServiceAccount for RabbitMQ pods
+      ##
+      create: &quot;&quot;
+      ## @param serviceAccount.name Name of the created serviceAccount
+      ## If not set and create is true, a name is generated using the rabbitmq.fullname template
+      ##
+      name: *serviceAccount
+
+    # ---- metadata annotations ----
+    ## @param podAnnotations RabbitMQ Pod annotations. Evaluated as a template
+    podAnnotations: {}
+    ## @param podLabels RabbitMQ Pod labels. Evaluated as a template
+    podLabels: {}
+
+    ## @param terminationGracePeriodSeconds Default duration in seconds k8s waits for container to exit before sending kill signal.
+    ## Any time in excess of 10 seconds will be spent waiting for any synchronization necessary for cluster not to lose data.
+    ##
+    terminationGracePeriodSeconds: 60
+
+# ------------------------------------
+# Assisted Authoring Detailed Options
+# ------------------------------------
+
+expai:
+
+  # Any users added to this group will be administrators of Assisted Authoring.  This group will be created by Experience
+  # Cloud
+  adminGroup: &amp;adminGroup expai-admins
+
+  # This is an optional section to have Experience Cloud set up some default providers for Assisted Authoring.  Leave
+  # both providers URL's blank to have Experience Cloud not create any providers automatically.  These can be created
+  # using the Assisted Authoring Config UI as well.
+  providers:
+
+    magellan:
+
+      # If Magellan Text Mining Service is installed, provide the URL and details here and a provider will be created
+      # with some default settings automatically.  Leave this blank and all of the other Magellan settings are ignored.
+      # The settings this provider are created with can be edited using the Config UI.  The format for this field is:
+      # http://&lt;service name&gt;.&lt;namespace&gt;.svc.cluster.local:&lt;port&gt;/rs/v2/
+      url: *providerMagellanUrl
+
+      # The name of the provider to be created
+      name: *providerMagellanName
+
+      # The Magellan Text Mining Service user to use
+      user: *providerMagellanUser
+
+      # The Magellan Text Mining Service user password in base 64
+      password: *providerMagellanPassword
+
+    languagetool:
+
+      # If LanguageTool is installed, provide the URL here and a provider will be created with some default settings
+      # automatically.  Leave this blank and all of the other LanguageTool settings are ignored.  The settings this 
+      # provider are created with can be edited using the Config UI.  The format for this field is:
+      # http://&lt;service name&gt;.&lt;namespace&gt;.svc.cluster.local:&lt;port&gt;/v2/
+      url: *providerLanguageToolUrl
+
+      # The name of the provider to be created
+      name: *providerLanguageToolName
+
+
+  enabled: *assistedAuthoringEnabled
+
+  # The default language code to use when one is not provided in the request
+  defaultLanguage: en-US
+
+  global: 
+
+    # The address to access the Vault instance.
+    vaultUrl: *vaultUrl
+
+    # The namespace where vault is present. private-cloud is default namespace
+    vaultNamespace: *vaultNamespace
+
+    # vault authentication type
+    vaultAuthenticationType: *vaultAuthenticationType
+
+    # Secret engine path
+    vaultSecretEnginePath: *vaultSecretEnginePath
+
+    # Authentication role
+    vaultAuthenticationRole: *vaultAuthenticationRole
+
+    # Authentication Path
+    vaultAuthenticationPath: *vaultAuthenticationPath  
+
+    # The repository for the Assisted Authoring container images
+    repository: *assistedAuthoringRegistry
+
+    imagePullSecrets: *imagePullSecrets
+
+    ingress:
+      host: *publicHostname
+      secret:
+        name: *ingressSecret
+      class: *ingressClass
+
+    # The service account name.
+    serviceAccount:
+      name: *serviceAccount
+
+    env:
+
+      HTTP_PROXY: *proxyHost
+
+      PROXY_PORT: *httpProxyPort
+
+      NO_PROXY: *noProxy
+
+      DATABASE_URL: *expaiDBUrl
+
+      DATABASE_USER: *expaiDBUser
+
+      DATABASE_PASSWORD: *expaiDBUserPassword
+
+      DATABASE_SCHEMA: &quot;expai&quot;
+
+      DATABASE_CONNECTION_MAX_LIFETIME: 600000
+
+      # Format is &quot;http://&lt;releaseName&gt;-otdsws.&lt;namespace&gt;.svc.cluster.local:80/&lt;OTDS prepend path&gt;/otdsws&quot;.  If OTDS is using a blank
+      # prepend path, remove the additional / to make it a valid URL. 
+      OTDS_INTERNAL_ADDRESS_OVERRIDE: &quot;&quot;
+
+    enable_probes: true
+
+    newrelic:
+      agent_enabled: *newRelicEnabled
+      license_key: *newRelicLicenseKey
+      proxy_host: *newRelicProxyHost
+      proxy_port: *newRelicProxyPort
+      proxy_scheme: *newRelicProxyScheme
+      application_name_suffix: *newRelicAssistedAuthoringSuffix
+
+    extraPodMatchLabels: *extraPodMatchLabels
+
+  api:
+    enabled: true
+    replicaCount: 1
+
+    deployment:
+      imagePullPolicy: *imagePullPolicy
+
+    nodeSelector: {}
+
+    otds_authentication: false
+
+    readinessProbe:
+      enabled: true
+
+    livenessProbe:
+      enabled: true
+
+    sslSecret:
+      enabled: false
+      name: &quot;&quot;
+      cacerts: false
+      expaiP12: false
+
+    service:
+      annotations: {}
+
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+
+    ingress:
+
+      enabled: *ingressEnabled
+
+      annotations:
+      # Add any necessary ingress annotations.  If using OpenShift, use annotation:
+      # route.openshift.io/termination: &quot;edge&quot;
+
+    env:
+      DEFAULT_TENANT: *tenantName
+      administrator_system_role: *adminGroup
+      EAIS_JAVAX_NET_SSL_TRUSTSTORE: &quot;&quot;
+      EAIS_JAVAX_NET_SSL_TRUSTSTORE_PASSWORD: &quot;&quot;
+      EAIS_HOST_WHITELIST_REGEX: &quot;.*&quot;
+
+  config:
+    enabled: true
+    replicaCount: 1
+
+    deployment:
+      imagePullPolicy: *imagePullPolicy
+
+    nodeSelector: {}
+
+    readinessProbe:
+      enabled: true
+
+    livenessProbe:
+      enabled: true
+
+    sslSecret:
+      enabled: false
+      name: &quot;&quot;
+      cacerts: false
+      expaiP12: false
+
+    service:
+      annotations: {}
+
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+
+    ingress:
+
+      enabled: *ingressEnabled
+
+      annotations:
+      # Add any necessary ingress annotations.  If using OpenShift, use annotation:
+      # route.openshift.io/termination: &quot;edge&quot;
+        nginx.ingress.kubernetes.io/affinity: &quot;cookie&quot;
+        nginx.ingress.kubernetes.io/session-cookie-name: &quot;expai-session-affinity&quot;
+        nginx.ingress.kubernetes.io/affinity-mode: &quot;persistent&quot;
+
+    env:
+      administrator_url: &quot;&quot;
+      administrator_system_role: *adminGroup
+      EAIS_JAVAX_NET_SSL_TRUSTSTORE: &quot;&quot;
+      EAIS_JAVAX_NET_SSL_TRUSTSTORE_PASSWORD: &quot;&quot;
+      EAIS_HOST_WHITELIST_REGEX: &quot;.*&quot;
+      USE_HTTPS: *useHttps
+      PUBLIC_HOSTNAME: *publicHostname
+
+# ------------------------------------
+# RMA Detailed Options
+# ------------------------------------
+mediaanalysis:
+
+  enabled: *rmaEnabled
+  extensionImages: []
+  # - name:
+  #   image: &quot;&lt;docker registry URL for extension image&gt;&quot;     
+  # - name:
+  #   image: &quot;&lt;docker registry URL for extension image&gt;&quot;
+
+  # ---- metadata annotations ----
+  # Example:
+  #   podAnnotations:
+  #     backup.velero.io/backup-volumes-excludes: 'rma-custom-volume'
+  #   podLabels:
+  #     app.kubernetes.io/component: 'mediaanalysis'
+  #   containerSecurityContext:
+  #     readOnlyRootFilesystem: true
+  podAnnotations: {}
+  podLabels: {}
+  containerSecurityContext: {}
+
+  global:
+      useReleaseName: true
+      product: &quot;RMA&quot;
+      namespace:
+      imagePullPolicy:  *imagePullPolicy
+      imagePullSecret: *imagePullSecret
+      repository: *rmaRegistry
+      secureEndpoints: *useHttps
+      publicHostName: *publicHostname
+      newRelicLicenseKey: *newRelicLicenseKey
+      cfcrBaseUrl: &amp;cfcr_base_url
+      # Internal Kubernetes hostnames for OTDS + RMA
+      internal:
+        otds:
+          # if the value is blank,it defaults to &quot;&lt;releasename&gt;-otdsws&quot; or &quot;otdsws&quot; depending on whether &quot;useReleaseName&quot; property is set to true or false
+          host: 
+          # The prepend path should have otds prepend path prefix with forward slash
+          prependPath: /otds
+        rabbitmq:
+          # if the value is blank,it defaults to &quot;&lt;releasename&gt;-rabbitmq&quot; or &quot;rabbitmq&quot; depending on whether &quot;useReleaseName&quot; property is set to true or false
+          host: 
+          port: 5672
+          # The prepend path should have rabbitmq prepend path prefix with forward slash
+          prependPath : /rabbitmq               
+
+  auth:
+      rabbitmqDefaultUser: *rabbitmqAppUser
+      rabbitmqPassword: *rabbitmqAppPassword
+      keystorePass:
+
+  # Configure the database backend for persisting RMA subscriptions
+  database:
+      type: *dbType
+      host: *dbHost
+      port: *dbPort
+      name: *rmaDBName
+      user: *rmaDBUser
+      password: *rmaDBPassword
+
+  service:
+      name: rma
+      type: ClusterIP
+      port: 8093
+
+  container:
+      name: otmm_rma
+      tag: 24.4.0
+
+  nodeSelector:
+      useNodeSelector: false
+
+  ingress:
+      enabled: *ingressEnabled
+      class: *ingressClass
+      secret: *ingressSecret
+      type: *ingressClass
+
+  #  PROXY settings
+  javaOptions:
+      proxy: *proxyEnabled
+      proxyhost: *proxyHost
+      proxyport: *httpProxyPort
+      noproxy: *noProxy
+
+  # Service account name and whether RMA should create service account
+  serviceAccount:
+    name: *serviceAccount
+    create: false
+
+  # vault properties for RMA
+  vault:
+    server:
+      # address of the vault server expressed as a URL and port, e.g., http://1.2.3.4:8200
+      address: *vaultUrl 
+      namespace: *vaultNamespace
+      # if a custom vault secrets engine root is used, specify it here or leave it blank.
+      secretEngineRoot: *vaultSecretEnginePath
+    agent:
+      auth:
+        # this is the Kubernetes authentication path name
+        type: *vaultAuthenticationType
+        path: *vaultAuthenticationPath
+        role: *vaultAuthenticationRole    
+
+  configmaps:
+      #
+      # Media Analysis properties
+      # -------------------------------------------------
+      # Specify image analysis provider: [&quot;Azure&quot;, &quot;Google&quot;, &quot;AWS&quot;], default is &quot;Azure&quot;
+      MEDIAANALYSIS_IMAGE_PROVIDER: ''
+      # Specify video analysis provider: [&quot;Azure&quot;, &quot;Google&quot;], default is &quot;Azure&quot;
+      MEDIAANALYSIS_VIDEO_PROVIDER: ''
+      RABBITMQ_SECRETS_KEY: rabbitmq
+      RABBITMQ_SECRETS_USERNAME_KEY: appUsername
+      RABBITMQ_SECRETS_PASSWORD_KEY: appPassword
+
+# -------------------------------------------------------------
+# Experience Cloud Persistence Service Logging Detailed Options
+# -------------------------------------------------------------
+# Experience Cloud Persistence Service Logging Level
+expcloudServiceLoggingLevel: INFO
+
+# Experience Cloud Persistence Service Hibernate SQL Logging Level
+expcloudServiceHibernateLoggingLevel: ERROR
+
+# Experience Cloud Persistence Service Spring framework Security Logging Level
+expcloudServiceSpringframeworkSecurityLogging: ERROR
+
+# Experience Cloud Persistence Service Spring framework Web Logging Level
+expcloudServiceSpringframeworkWebLogging: ERROR
+
+global:
+  # This is to decide whether to create config-maps in subcharts or not. No need to change this value. 
+  product: &quot;experience-cloud&quot;
+
+</code></pre>
+<p><a href="../values.custom.yaml">values.custom.yaml</a></p>
+<pre><code class="language-bash"># values.custom.yaml파일내용중 imagePullSecrets의 opentext-docker-secret는 다음 명령어로 생성
+
+kubectl create secret docker-registry opentext-docker-secret \
+--docker-server=[registry.opentext.com](http://registry.opentext.com/) \
+[--docker-username=kwpark@penta.co.kr](mailto:--docker-username=kwpark@penta.co.kr) \
+--docker-password=SystemAdmin@2024 \
+--namespace otxf
+ kubectl delete secret opentext-docker-secret -n otxf
+</code></pre>
+<hr />
+<h3 id="10">10단계. 설치</h3>
+<pre><code class="language-bash">cd opentext-experience-cloud
+kubectl create namespace otxf 
+
+helm uninstall expcloud -n otxf
+kubectl delete pvc --all -n otxf
+
+helm install expcloud -n otxf -f values_expcloud.yaml \
+-f resource-df.yaml \
+.
+
+helm upgrade expcloud -i -n otxf -f values_expcloud.yaml \
+-f resource-df.yaml \
+.    
+kubectl rollout restart -n otxf deployment/expcloud-rma
+kubectl rollout restart -n otxf statefulset/expcloud-rabbitmq
+
+
+ helm install expcloud ./ -n expcloud -f resources/resource-test.yaml -f values.expcloud.yaml --timeout 10m0s --wait
+
+helm install expcloud ./ -n otxf \
+-f resources/resource-test.yaml \
+-f ecf-config.yaml \
+--timeout 10m0s --wait
+
+helm upgrade expcloud ./ -n otxf \
+-f resources/resource-test.yaml \
+-f ecf-config.yaml \
+--timeout 10m0s --wait
+
+
+helm install expcloud ./ -n otxf \
+  -f resources/resource.yaml \
+  -f nginx-annotations.yaml \
+  -f values.custom.yaml \
+  --timeout 10m0s --wait
+
+helm upgrade otxf ./ -n otxf \
+  -f resources/resource.yaml \
+  -f nginx-annotations.yaml \
+  -f values.custom.yaml \
+  --timeout 10m0s --wait
+
+</code></pre>
+<p>RMA용 사용자 생성 (이미 안 했을 경우)
+RabbitMQ Pod에 접속해서 사용자 생성:</p>
+<pre><code class="language-bash">kubectl exec -it -n otxf expcloud-rabbitmq-0  -- bash
+
+rabbitmqctl add_user expcloud Admin@2024
+rabbitmqctl set_user_tags expcloud none
+rabbitmqctl set_permissions -p / expcloud &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;
+rabbitmqctl list_users
+
+</code></pre>
+<p>성공메시지</p>
+<pre><code class="language-bash">damadmin@dam-a:~/opentext-experience-cloud$ helm upgrade expcloud -i -n otxf -f values_expcloud.yaml \
+&gt; -f resource-df.yaml \
+&gt; .
+
+Release &quot;expcloud&quot; has been upgraded. Happy Helming!
+NAME: expcloud
+LAST DEPLOYED: Tue Jun 17 14:12:04 2025
+NAMESPACE: otxf
+STATUS: deployed
+REVISION: 2
+NOTES:
+Experience Cloud has been installed.  Below you will find the details of the configuration:
+
+OTDS Tenant: otxf
+OTDS Tenant Initial Credentials: otadmin@otds.admin/Admin@2024
+OTDS Host: https://dam-a.penta.co.kr
+OTDS System Tenant Admin URL: https://dam-a.penta.co.kr/otds-admin
+OTDS Tenant Admin URL: https://dam-a.penta.co.kr/otdstenant/otxf/otds-admin
+OTDS Tenant Partition Created: experience-cloud
+OTDS Tenant oAuth Client Created: experience-cloud
+
+RabbitMQ URL: https://dam-a.penta.co.kr/rabbitmq/
+
+RMA Installed: true
+
+Below is a YAML formatted Experience Cloud configuration:
+otds:
+  tenant: &quot;otxf&quot;
+  tenantAdmin: &quot;otadmin@otds.admin&quot;
+  tenantAdminPassword: &quot;Admin@2024&quot;
+  externalUrl: &quot;https://dam-a.penta.co.kr/otdsws/otdstenant/otxf&quot;
+  externalHost: &quot;dam-a.penta.co.kr&quot;
+  internalUrl: &quot;http://expcloud-otdsws.otxf.svc.cluster.local:80&quot;
+  internalHost: &quot;expcloud-otdsws.otxf.svc.cluster.local&quot;
+  internalPort: 80
+  prependPath: &quot;&quot;
+
+rabbitmq:
+  externalUrl: &quot;https://dam-a.penta.co.kr/rabbitmq/&quot;
+  internalUrl: &quot;http://expcloud-rabbitmq.otxf.svc.cluster.local:5672&quot;
+  internalHost: &quot;expcloud-rabbitmq.otxf.svc.cluster.local&quot;
+  internalPort: 5672
+  user: &quot;expcloud&quot;
+  userPassword: &quot;Admin@2024&quot;
+  adminUser: &quot;admin&quot;
+  adminUserPassword: &quot;Admin@2024&quot;
+  prependPath: &quot;/rabbitmq&quot;
+rma:
+  internalUrl: &quot;http://expcloud-rma.otxf.svc.cluster.local:8093&quot;
+  admin: &quot;otexpcadmin&quot;
+  adminPassword: &quot;Admin@2024&quot;
+
+To save the YAML configuration to a file, run the following script:
+
+    opentext-experience-cloud/scripts/manual-scripts/saveYamlToFile.sh otxf expcloud-values.yaml
+
+</code></pre>
+<p>reset-otxf-install.sh</p>
+<pre><code class="language-bash">#!/bin/bash
+
+set -e
+
+NAMESPACE=otxf
+RELEASE_NAME=expcloud
+
+echo &quot;🔁 1. Helm 릴리스 제거...&quot;
+helm uninstall &quot;$RELEASE_NAME&quot; -n &quot;$NAMESPACE&quot; || echo &quot;⚠️  Helm 릴리스가 존재하지 않음&quot;
+
+echo &quot;🧹 2. PVC 제거...&quot;
+kubectl delete pvc --all -n &quot;$NAMESPACE&quot; || true
+
+echo &quot;🧹 3. Secret 제거...&quot;
+kubectl delete secret rabbitmq -n &quot;$NAMESPACE&quot; --ignore-not-found=true
+kubectl delete secret --all -n &quot;$NAMESPACE&quot; || true
+
+echo &quot;🧹 4. ConfigMap 제거...&quot;
+kubectl delete configmap --all -n &quot;$NAMESPACE&quot; || true
+
+echo &quot;🧨 5. 네임스페이스 삭제 (잠시 기다림)...&quot;
+kubectl delete ns &quot;$NAMESPACE&quot; || true
+sleep 5
+
+echo &quot;⏳ 네임스페이스 삭제 완료까지 대기...&quot;
+while kubectl get ns &quot;$NAMESPACE&quot; &gt;/dev/null 2&gt;&amp;1; do
+  echo &quot;⏳ 아직 삭제 중... 기다리는 중...&quot;
+  sleep 3
+done
+
+echo &quot;✅ 네임스페이스 완전히 삭제됨&quot;
+
+echo &quot;🚀 6. 네임스페이스 재생성...&quot;
+kubectl create ns &quot;$NAMESPACE&quot;
+
+echo &quot;🏁 초기화 완료. 다음 명령으로 설치를 진행하세요:&quot;
+echo &quot;&quot;
+echo &quot;helm install $RELEASE_NAME ./ -n $NAMESPACE \\&quot;
+echo &quot;  -f ecf-config.yaml \\&quot;
+echo &quot;  -f resources/resource-test.yaml \\&quot;
+echo &quot;  --timeout 10m0s --wait&quot;
+
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
