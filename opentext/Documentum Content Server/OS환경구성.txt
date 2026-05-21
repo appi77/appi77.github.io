@@ -1,0 +1,19 @@
+▣ Pre-installation tasks on Windows 
+a four-digit year (yyyy) date <이미 되어 있음>
+Disable the user access control (UAC).
+Disable the IP Helper service from the Windows Services console 
+Install Microsoft Visual C++ 2013 and 2019 Redistributable (64-bit) packages before creating a repository. <이미 되어 있음>
+
+▣ IPV6 끄기
+위치: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\
+이름: DisabledComponents
+유형: REG_DWORD
+값 : 10진수 32
+
+
+▣ 네트워크 우선순위 변경
+고급 TCP/IP설정 자동메트릭
+인터페이스 메트릭스 1 로 설정
+
+▣ password complexity rules
+DM_CRYPTO_MIN_PASSWORD_LENGTH = 8

@@ -1,0 +1,21 @@
+특정버전에서
+Documentum Java Method Server서버가 20분 후 종료됨
+
+▣ 설명
+서비스에 등록되어 있는 서비스를 보면
+실행 파일 경로는
+"D:\Documentum\tools\javaServiceWrapper\3.5.49\bin\wrapper.exe" -s "D:\Documentum\tomcat9.0.71\server\serviceConfig\MethodServer\conf\wrapper.conf"
+으로 되어 있고
+D:\Documentum\tomcat9.0.71\server\serviceConfig\MethodServer\conf\wrapper.conf
+에 wrapper.shutdown.timeout=1200로 정의되어 있다.
+1200 의미는 서비스가 시작 1200초 후 프로세스가 정상인지 확인한다.
+command창에서
+D:\Documentum\tomcat9.0.71\bin>dctmServerStatus.bat  9080 DmMethodServer
+을 실행시켜
+Tomcat Server is running
+이 되어야 하는데 한글/영문 코드와 관련 오류가 있었다.
+
+▣ 문제해결
+dctmServerStatus.bat 파일에
+chcp 437  > NUL 
+추가 한다.

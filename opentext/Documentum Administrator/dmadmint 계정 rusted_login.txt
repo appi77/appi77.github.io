@@ -1,0 +1,3 @@
+documentum administrator를 설치계정으로 시작했을때 trusted 로그인되는 현상
+dfc.properties에 추가
+dfc.session.allow_trusted_login=false
